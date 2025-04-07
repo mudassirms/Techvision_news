@@ -18,11 +18,11 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Services", href: "/#services" },
-    { name: "Team", href: "/#team" },
-    { name: "Why Us", href: "/#why-us" },
-    { name: "Contact", href: "/#contact" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Team", href: "#team" },
+    { name: "Why Us", href: "#why-us" },
+    { name: "Contact", href: "#contact" },
     { name: "Careers", href: "/careers" },
   ];
 
@@ -54,6 +54,7 @@ export default function Navbar() {
               key={item.name}
               href={item.href}
               className="hover:text-cyan-300 transition-colors duration-200"
+              scroll={false} // prevent default scroll behavior to allow for scroll-mt spacing
             >
               {item.name}
             </Link>
@@ -79,6 +80,7 @@ export default function Navbar() {
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
               className="block hover:text-cyan-300 font-medium"
+              scroll={false} // same here
             >
               {item.name}
             </Link>
