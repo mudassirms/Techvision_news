@@ -10,12 +10,11 @@ export default function Footer() {
         {/* Logo & About */}
         <div>
           <Link href="/" className="flex items-center mb-3">
-          <img
-  src="/Newlogo.png"
-  alt="Maverick Ignite Logo"
-  className="h-12 sm:h-16 w-auto object-contain block"
-/>
-
+            <img
+              src="/Newlogo.png"
+              alt="Maverick Ignite Logo"
+              className="h-12 sm:h-16 w-auto object-contain block"
+            />
             <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
               MaverickIgnite
             </span>
@@ -56,10 +55,10 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Services</h4>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><Link href="/services/ai-development" className="hover:text-cyan-300">AI Software Development</Link></li>
-            <li><Link href="/services/data-management" className="hover:text-cyan-300">Data Management</Link></li>
-            <li><Link href="/services/system-integration" className="hover:text-cyan-300">System Integration</Link></li>
-            <li><Link href="/services/ai-consulting" className="hover:text-cyan-300">AI Consulting</Link></li>
+            <li><a href="#ai" className="hover:text-cyan-300">AI Software Development</a></li>
+            <li><a href="#data" className="hover:text-cyan-300">Data Management</a></li>
+            <li><a href="#integration" className="hover:text-cyan-300">System Integration</a></li>
+            <li><a href="#consulting" className="hover:text-cyan-300">AI Consulting</a></li>
           </ul>
         </div>
 
