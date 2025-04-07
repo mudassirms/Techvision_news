@@ -71,13 +71,26 @@ export default function Footer() {
           <p className="text-gray-300 text-sm mt-2">
             Phone: <a href="tel:+919036666910" className="hover:text-cyan-300">+91 9036666910</a>
           </p>
+          <p className="text-gray-300 text-sm mt-2">
+            Address:{" "}
+            <a
+              href="https://www.google.com/maps/place/3rd+Floor,+Vaishnavi+Signature,+Panathur+Main+Rd,+Bengaluru,+Karnataka+560103"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cyan-300"
+            >
+              No 16 HIG-A Building No.20 3rd Floor KHB colony shirke layout Kengeri Bangalore 560060
+            </a>
+          </p>
         </div>
       </div>
 
       {/* Bottom Strip */}
-      <div className="border-t border-[#1f2a3a] mt-10 pt-6 text-center text-gray-500 text-xs">
-        <p>© 2025 <span className="text-white font-semibold">Maverick Ignite Solution LLP</span>. All rights reserved.</p>
-        <div className="flex justify-center gap-4 mt-2 flex-wrap">
+      <div className="border-t border-[#1f2a3a] mt-12 pt-8 text-center text-gray-400 text-sm">
+        <p className="mb-2">
+          © 2025 <span className="text-white font-semibold">Maverick Ignite Solutions LLP</span>. All rights reserved.
+        </p>
+        <div className="flex justify-center gap-5 flex-wrap">
           <Link href="/privacy-policy" className="hover:text-cyan-300">Privacy Policy</Link>
           <span>|</span>
           <Link href="/terms-of-service" className="hover:text-cyan-300">Terms of Service</Link>

@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import Product from '../components/Product';
 import SeamlessSection from '../components/SeamlessSection';
 import IntelligentBusinessSection from "@/components/IntelligentBusinessSection";
-
+import AnimatedPosterSection from "@/components/AnimatedPosterSection";
 
 export default function Home() {
   return (
@@ -109,9 +109,12 @@ export default function Home() {
             </div>
           </div>
         </section>
+         {/* 🔥 This new section */}
+      <AnimatedPosterSection />
+
 
         <div className="mt-16">
-  <SeamlessSection />
+  <SeamlessSection /> 
   <IntelligentBusinessSection />
 </div>
 

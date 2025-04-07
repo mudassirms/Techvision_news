@@ -17,13 +17,13 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "/" },
+    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Team", href: "#team" },
     { name: "Why Us", href: "#why-us" },
     { name: "Contact", href: "#contact" },
-    { name: "Careers", href: "/careers" },
+    { name: "Careers", href: "/careers" }, // still a separate page
   ];
 
   return (
@@ -50,14 +50,13 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-white">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.name}
               href={item.href}
               className="hover:text-cyan-300 transition-colors duration-200"
-              scroll={false} // prevent default scroll behavior to allow for scroll-mt spacing
             >
               {item.name}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -75,15 +74,14 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-[#050d1b]/95 backdrop-blur-md text-white px-6 py-4 space-y-4 transition-all duration-300">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.name}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
               className="block hover:text-cyan-300 font-medium"
-              scroll={false} // same here
             >
               {item.name}
-            </Link>
+            </a>
           ))}
         </div>
       )}
