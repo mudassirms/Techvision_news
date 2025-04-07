@@ -11,7 +11,7 @@ export default function Footer() {
         <div>
           <Link href="/" className="flex items-center mb-3">
             <img
-              src="/newlogo.png"
+              src="/Newlogo.png"
               alt="Maverick Ignite Logo"
               className="h-6 w-auto mr-2"
             />
