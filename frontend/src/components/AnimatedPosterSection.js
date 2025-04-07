@@ -1,16 +1,33 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function AnimatedPosterSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.4 });
+  const controls = useAnimation();
+  const controlsText = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start({ opacity: 1, x: 0 });
+      controlsText.start({ opacity: 1, x: 0 });
+    } else {
+      controls.start({ opacity: 0, x: -50 });
+      controlsText.start({ opacity: 0, x: 50 });
+    }
+  }, [isInView, controls, controlsText]);
+
   return (
-    <section className="w-full bg-[#050d1b] py-20 px-6 flex flex-col lg:flex-row items-center justify-between gap-10">
+    <section
+      ref={ref}
+      className="w-full bg-[#050d1b] py-20 px-6 flex flex-col lg:flex-row items-center justify-between gap-10"
+    >
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
+        animate={controls}
         transition={{ duration: 0.8 }}
         className="w-full max-w-md flex-shrink-0"
       >
@@ -20,20 +37,20 @@ export default function AnimatedPosterSection() {
           className="shadow-xl rounded-xl overflow-hidden"
         >
           <Image
-            src="/robo.png"
-            alt="Floating Animated Poster"
-            width={400}
-            height={400}
-            className="w-full h-auto object-contain"
-          />
+  src="/Robo.png"
+  alt="Animated Poster"
+  width={400}
+  height={400}
+  priority
+  unoptimized // This skips Vercel's optimization pipeline
+/>
+
         </motion.div>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        animate={controlsText}
+        transition={{ duration: 0.8, delay: 0.2 }}
         className="text-white max-w-xl"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
