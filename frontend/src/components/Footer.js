@@ -10,12 +10,12 @@ export default function Footer() {
         {/* Logo & About */}
         <div>
           <Link href="/" className="flex items-center mb-3">
-            <img
-              src="/Newlogo.png"
-              alt="Maverick Ignite Logo"
-              className="h-14 sm:h-16 w-auto object-contain"
+          <img
+  src="/Newlogo.png"
+  alt="Maverick Ignite Logo"
+  className="h-12 sm:h-16 w-auto object-contain block"
+/>
 
-            />
             <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
               MaverickIgnite
             </span>
