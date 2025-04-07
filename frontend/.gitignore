@@ -1,0 +1,11 @@
+# Node modules anywhere in the project
+**/node_modules
+
+# Next.js build output
+**/.next
+
+# Environment variables
+**/.env
+
+# Mac system files
+.DS_Store
