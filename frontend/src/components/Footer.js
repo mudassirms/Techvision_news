@@ -13,9 +13,10 @@ export default function Footer() {
             <img
               src="/Newlogo.png"
               alt="Maverick Ignite Logo"
-              className="h-6 w-auto mr-2"
+              className="h-14 sm:h-16 w-auto object-contain"
+
             />
-            <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
               MaverickIgnite
             </span>
           </Link>
