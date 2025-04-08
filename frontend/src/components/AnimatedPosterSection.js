@@ -24,13 +24,13 @@ export default function AnimatedPosterSection() {
   return (
     <section
       ref={ref}
-      className="w-full bg-[#050d1b] py-20 px-6 flex flex-col lg:flex-row items-center justify-between gap-10"
+      className="w-full bg-[#050d1b] py-20 px-6 flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-65"
     >
-      {/* 📦 Image without shadow or glow */}
+      {/* 📦 Image Section */}
       <motion.div
         animate={controls}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-md flex-shrink-0"
+        className="w-full max-w-sm flex-shrink-0"
       >
         <motion.div
           animate={{
@@ -48,8 +48,8 @@ export default function AnimatedPosterSection() {
           <Image
             src="/explore3.png"
             alt="Animated Poster"
-            width={500}
-            height={500}
+            width={450}
+            height={450}
             priority
             unoptimized
             className="rounded-3xl"
@@ -57,13 +57,13 @@ export default function AnimatedPosterSection() {
         </motion.div>
       </motion.div>
 
-      {/* ✍️ Text content */}
+      {/* ✍️ Text Section */}
       <motion.div
         animate={controlsText}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-white max-w-xl"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-5">
           Transform Ideas into AI Reality
         </h2>
         <p className="text-gray-300 text-lg mb-6">

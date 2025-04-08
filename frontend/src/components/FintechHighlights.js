@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Cloud, Brain, LineChart, Settings, Building } from "lucide-react";
-
+import { motion, useAnimation, useInView } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 export default function FintechSolutionsSection() {
   const features = [
     {
@@ -39,6 +41,37 @@ export default function FintechSolutionsSection() {
         >
           Powering the Future of Intelligent Business
         </motion.h2>
+
+        {/* 📦 Image without shadow or glow */}
+              <motion.div
+                animate={controls}
+                transition={{ duration: 0.8 }}
+                className="w-full max-w-md flex-shrink-0"
+              >
+                <motion.div
+                  animate={{
+                    rotateX: [0, 5, -5, 0],
+                    rotateY: [0, -5, 5, 0],
+                    scale: [1, 1.03, 1],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                  className="rounded-3xl overflow-hidden"
+                >
+                  <Image
+                    src="/Iron_Theme2.png"
+                    alt="Animated Poster"
+                    width={500}
+                    height={500}
+                    priority
+                    unoptimized
+                    className="rounded-3xl"
+                  />
+                </motion.div>
+              </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {features.map((feature, index) => (

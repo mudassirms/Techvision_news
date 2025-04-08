@@ -32,8 +32,8 @@ export default function RootLayout({ children }) {
           enableSystem={true}
           disableTransitionOnChange={false}
         >
-          <div className="w-full bg-white dark:bg-[#050d1b] transition-colors duration-300">
-            <main className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="w-full h-full bg-white dark:bg-[#050d1b] transition-colors duration-300">
+            <main className="w-full h-full">
               {children}
             </main>
           </div>

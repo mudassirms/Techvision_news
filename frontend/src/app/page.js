@@ -20,7 +20,7 @@ export default function Home() {
         {/* ✅ Hero Section */}
         <header
           id="home"
-          className="relative w-full min-h-screen flex items-center justify-center text-white px-4 scroll-mt-24"
+          className="relative w-full min-h-screen flex items-center justify-center text-white px-4 scroll-mt-20"
         >
           <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl w-full gap-10">
             {/* Text Content - Left Side */}
@@ -29,7 +29,7 @@ export default function Home() {
                 Powering the Future with <span className="text-[#00fff7]">AI</span>
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 animate-fadeIn delay-200">
-                Software Development • AI Integration • Data Solutions • Talent Growth
+                Software Development • AI Integration • Data Solutions • System Modernization
               </p>
               <a
                 href="#contact"
@@ -62,7 +62,9 @@ export default function Home() {
         </header>
 
         {/* ✅ About Section - Vision & Mission Animates on Scroll */}
-        <section id="about" className="px-6 md:px-10 py-16 scroll-mt-24">
+        <section id="about" className="px-6 md:px-10 pt-16 pb-4 scroll-mt-24">
+
+
           <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
             <h2 className="text-4xl font-bold text-[#00ffc2] text-center">Who We Are?</h2>
             <p className="mt-4 text-lg text-gray-300 text-center max-w-3xl mx-auto">
@@ -108,13 +110,18 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+                {/* 🔥 Poster and AI Sections */}
+                <div className="mt-2">
+  <AnimatedPosterSection />
+</div>
+
+
           {/* ✅ Services Section */}
           <section id="services" className="scroll-mt-24">
           <Services />
         </section>
 
-        {/* 🔥 Poster and AI Sections */}
-        <AnimatedPosterSection />
         <div className="mt-16">
           <IntelligentBusinessSection />
         </div>
@@ -129,15 +136,17 @@ export default function Home() {
               We’re bridging innovation and technology to create intelligent solutions that shape the future.
             </p>
             <a
-              href="#services"
+              href="#products"
               className="inline-block px-8 py-3 bg-[#00ffc2] hover:bg-cyan-300 text-black font-semibold rounded-full shadow-md transition"
             >
-              Discover Our Services
+              Discover Our Products
+
             </a>
           </div>
         </section>
 
-      
+       {/* ✅ Product Section */}
+       <Product />
 
         {/* ✅ Why Choose Us */}
         <section id="why-us" className="px-6 md:px-10 py-16 scroll-mt-24">
@@ -160,9 +169,6 @@ export default function Home() {
             })}
           </div>
         </section>
-
-        {/* ✅ Product Section */}
-        <Product />
 
         {/* ✅ Contact Section */}
         <section

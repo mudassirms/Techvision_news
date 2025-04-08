@@ -1,315 +1,324 @@
-  @import "tailwindcss";
+@import "tailwindcss";
 
+/*======================
+  Root Theme Variables
+=======================*/
+:root {
+  --background: #0f0c29;
+  --foreground: #ffffff;
+  --primary: #00f5a0; /* Neon green */
+  --secondary: #302b63; /* Dark blue */
+  --accent: #00d9f5;   /* Neon blue */
+  --highlight: #ffffff;
+
+  --neon-glow: 0 0 8px var(--primary), 0 0 16px var(--accent);
+  --font-glow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #0f0c29;
-    --foreground: #ffffff;
-    --primary: #00f5a0; /* Neon green */
-    --secondary: #302b63; /* Dark blue */
-    --accent: #00d9f5;   /* Neon blue */
-    --highlight: #ffffff;
+    --foreground: #e5e7eb;
+  }
+}
 
-    --neon-glow: 0 0 8px var(--primary), 0 0 16px var(--accent);
-    --font-glow: 0 0 5px var(--primary), 0 0 10px var(--primary);
-  }
+/*======================
+  Global Styles
+=======================*/
+html {
+  scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
+}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #0f0c29;
-      --foreground: #e5e7eb;
-    }
-  }
+body {
+  background: linear-gradient(135deg, var(--background), var(--secondary));
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
 
-  html {
-    scroll-padding-top: 5rem;
-  }
+/*======================
+  Utility Classes
+=======================*/
+.bg-primary {
+  background-color: var(--primary);
+}
+.text-primary {
+  color: var(--primary);
+}
+.bg-secondary {
+  background-color: var(--secondary);
+}
+.text-secondary {
+  color: var(--secondary);
+}
+.text-accent {
+  color: var(--accent);
+}
+.bg-accent {
+  background-color: var(--accent);
+}
+.text-highlight {
+  color: var(--highlight);
+}
+.bg-highlight {
+  background-color: var(--highlight);
+}
 
-  body {
-    background: linear-gradient(135deg, var(--background), var(--secondary));
-    color: var(--foreground);
-    font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-  }
+/*======================
+  Buttons
+=======================*/
+.glow-btn {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: black;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: var(--neon-glow);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+.glow-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent);
+}
 
-  /* Utility classes */
-  .bg-primary {
-    background-color: var(--primary);
-  }
-  .text-primary {
-    color: var(--primary);
-  }
-  .bg-secondary {
-    background-color: var(--secondary);
-  }
-  .text-secondary {
-    color: var(--secondary);
-  }
-  .text-accent {
-    color: var(--accent);
-  }
-  .bg-accent {
-    background-color: var(--accent);
-  }
-  .text-highlight {
-    color: var(--highlight);
-  }
-  .bg-highlight {
-    background-color: var(--highlight);
-  }
+/*======================
+  Footer
+=======================*/
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: var(--highlight);
+}
 
-  /* Animations */
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.footer-bottom {
+  text-align: center;
+  width: 100%;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+  margin-top: 2rem;
+}
+.footer-bottom p {
+  margin: 0;
+  color: var(--foreground);
+}
+.footer-bottom a {
+  margin: 0 0.75rem;
+  text-decoration: none;
+  color: var(--accent);
+}
+.footer-bottom a:hover {
+  color: var(--highlight);
+}
 
-  .fade-up {
-    animation: fadeUp 0.8s ease-out forwards;
-  }
-
-  /* Neon Buttons */
-  .glow-btn {
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    color: black;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: bold;
-    box-shadow: var(--neon-glow);
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-  }
-
-  .glow-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent);
-  }
-
-  /* Link styles */
-  footer a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  footer a:hover {
-    color: var(--highlight);
-  }
-
-  /* Footer Bottom Section */
-  .footer-bottom {
-    text-align: center;
-    width: 100%;
-    padding-top: 1rem;
-    border-top: 1px solid #333;
-    margin-top: 2rem;
-  }
-
-  .footer-bottom p {
-    margin: 0;
-    color: var(--foreground);
-  }
-
-  .footer-bottom a {
-    margin: 0 0.75rem;
-    text-decoration: none;
-    color: var(--accent);
-  }
-
-  .footer-bottom a:hover {
-    color: var(--highlight);
-  }
-
-  /* Hero Section */
-  .hero-section {
-    padding: 6rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom right, #0a0a0a, #1e1e1e);
-    min-height: 100vh;
-  }
-
+/*======================
+  Hero Section
+=======================*/
+.hero-section {
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #0a0a0a, #1e1e1e);
+  min-height: 100vh;
+}
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
   .hero-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1280px;
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 2rem;
+    flex-wrap: nowrap;
   }
-
-  @media (min-width: 768px) {
-    .hero-content {
-      flex-wrap: nowrap;
-    }
-  }
-
-  .hero-text {
-    flex: 1;
-    min-width: 300px;
-    color: var(--foreground);
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
-  }
-
-  .hero-text h2 {
-    font-size: 3rem;
-    color: var(--primary);
-    text-shadow: var(--font-glow);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  .hero-text p {
-    font-size: 1.125rem;
-    color: var(--foreground);
-    max-width: 500px;
-  }
-
-  .hero-image-wrapper {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Floating image wrapper - updated (removed glow) */
-  .floating-image-wrapper {
-    position: relative;
-    border-radius: 20px;
-    /* Removed glow */
-    /* filter: drop-shadow(0 0 10px var(--primary)); */
-    /* Removed blur */
-    /* backdrop-filter: blur(6px); */
-    transition: transform 0.4s ease;
-    perspective: 1000px;
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .floating-image {
-    max-width: 480px;
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    transform-style: preserve-3d;
-    will-change: transform;
-    transition: transform 0.3s ease;
-  }
-
-  .floating-image-wrapper:hover .floating-image {
-    transform: perspective(800px) rotateX(4deg) rotateY(-4deg) scale(1.03);
-  }
-
-  /* Floating Animation */
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  /* Navbar Glow */
-  @keyframes glowPulse {
-    0%, 100% {
-      box-shadow: 0 10px 30px #00ffc277;
-    }
-    50% {
-      box-shadow: 0 10px 40px #00ffc2aa;
-    }
-  }
-
-  .navbar-glow {
-    animation: glowPulse 3s ease-in-out infinite;
-  }
-  .react-phone-input-container .flag-dropdown .country-list .country:hover {
-    background-color: #374151 !important; /* dark gray on hover */
-    color: #fff !important; /* maintain white text */
-  }
-  
-  .react-phone-input-container .flag-dropdown .country-list .country {
-    background-color: #1f2937 !important; /* base background */
-    color: #fff !important; /* base text color */
-  }
-/* Phone input field itself */
-.react-tel-input .form-control {
-  background-color: #1f2937 !important; /* dark gray */
-  color: white !important;
-  border: 1px solid #4b5563 !important; /* tailwind gray-600 */
+}
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+  color: var(--foreground);
+}
+.hero-text h1 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+}
+.hero-text h2 {
+  font-size: 3rem;
+  color: var(--primary);
+  text-shadow: var(--font-glow);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.hero-text p {
+  font-size: 1.125rem;
+  color: var(--foreground);
+  max-width: 500px;
+}
+.hero-image-wrapper {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Dropdown container */
-.react-tel-input .flag-dropdown {
+/* Floating Image */
+.floating-image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  transition: transform 0.4s ease;
+  perspective: 1000px;
+  animation: float 6s ease-in-out infinite;
+}
+.floating-image {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+.floating-image-wrapper:hover .floating-image {
+  transform: perspective(800px) rotateX(4deg) rotateY(-4deg) scale(1.03);
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/*======================
+  Navbar Links & Glow
+=======================*/
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 10px 30px #00ffc277;
+  }
+  50% {
+    box-shadow: 0 10px 40px #00ffc2aa;
+  }
+}
+.navbar-glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+.nav-link {
+  position: relative;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, #0fffc1, #00bfff);
+  transition: width 0.3s ease-in-out;
+}
+.nav-link:hover {
+  color: #0fffc1;
+  text-shadow: 0 0 8px #0fffc1;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/*======================
+  Dropdowns
+=======================*/
+.dropdown-menu-item {
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+}
+.dropdown-menu-item:hover {
+  background: rgba(0, 255, 255, 0.08);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+/*======================
+  Phone Input Styling
+=======================*/
+.react-phone-input-container .flag-dropdown .country-list .country,
+.react-tel-input .country-list .country {
   background-color: #1f2937 !important;
-  border: 1px solid #4b5563 !important;
+  color: white !important;
 }
-
-/* Dropdown country list */
+.react-phone-input-container .flag-dropdown .country-list .country:hover,
+.react-tel-input .country-list .country:hover {
+  background-color: #374151 !important;
+  color: white !important;
+}
+.react-tel-input .form-control,
+.react-tel-input .search-box,
+.react-tel-input .flag-dropdown,
 .react-tel-input .country-list {
   background-color: #1f2937 !important;
   color: white !important;
   border: 1px solid #4b5563 !important;
 }
-
-/* Country list items */
-.react-tel-input .country-list .country {
-  background-color: #1f2937 !important;
-  color: white !important;
-}
-
-/* Country list items on hover */
-.react-tel-input .country-list .country:hover {
-  background-color: #374151 !important; /* slightly lighter dark */
-  color: white !important;
-}
-
-/* Search box inside dropdown */
-.react-tel-input .search-box {
-  background-color: #1f2937 !important;
-  color: white !important;
-  border: 1px solid #4b5563 !important;
-}
-
-/* Selected flag hover */
 .react-tel-input .selected-flag:hover {
   background-color: #1f2937 !important;
 }
-/* Fix Phone Input Dropdown Colors */
-.react-tel-input .country-list .country {
-  background-color: #1f2937 !important; /* Dark background */
-  color: white !important; /* White text */
+
+/*======================
+  Animations
+=======================*/
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
 }
 
-.react-tel-input .country-list .country:hover {
-  background-color: #374151 !important; /* Hover dark background */
-  color: white !important;
+/*======================
+  Scrollbar Styling
+=======================*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+@keyframes float-rotate {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) rotate(1deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
 }
 
-.react-tel-input .country-list {
-  background-color: #1f2937 !important;
-  color: white !important;
-}
-
-.react-tel-input .search-box {
-  background-color: #1f2937 !important;
-  color: white !important;
-  border: 1px solid #374151 !important;
+.animate-float {
+  animation: float-rotate 5s ease-in-out infinite;
 }

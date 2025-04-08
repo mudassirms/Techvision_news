@@ -1,30 +1,85 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Products", href: "#products" }, // ✅ New Product link
+    { name: "Products", href: "#products" },
     { name: "Why Us", href: "#why-us" },
     { name: "Contact", href: "#contact" },
     { name: "Careers", href: "/careers" },
   ];
+
+  const dropdownItems = {
+    Products: [
+      { name: "DataSense", href: "#products", id: "DataSense" },
+      { name: "SupportSense", href: "#products", id: "SupportSense" },
+      { name: "NotifyBot", href: "#products", id: "NotifyBot" },
+    ],
+    Services: [
+      { name: "AI Software", href: "#services" },
+      { name: "Data Management", href: "#services" },
+      { name: "Consulting", href: "#services" },
+    ],
+    Careers: [
+      { name: "Open Roles", href: "/careers#open-roles" },
+      { name: "Culture", href: "/careers#culture" },
+    ],
+  };
+
+  const isDropdown = (name) => Object.keys(dropdownItems).includes(name);
+
+  const handleProductClick = (id) => {
+    setOpenDropdown(null);
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      const section = document.getElementById("products");
+      section?.scrollIntoView({ behavior: "smooth" });
+
+      const openEvent = new CustomEvent("openProductModal", {
+        detail: id,
+      });
+      window.dispatchEvent(openEvent);
+    }, 300);
+  };
+
+  const handleServiceClick = () => {
+    setOpenDropdown(null);
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      const section = document.getElementById("services");
+      section?.scrollIntoView({ behavior: "smooth" });
+    }, 300);
+  };
 
   return (
     <header
@@ -34,7 +89,7 @@ export default function Navbar() {
           : "bg-[#050d1b] py-3"
       } border-b border-[#1f2a3a]`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between relative">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <img
@@ -48,15 +103,48 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-white">
+        <nav
+          className="hidden md:flex items-center space-x-6 text-sm font-medium text-white"
+          ref={dropdownRef}
+        >
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="hover:text-cyan-300 transition-colors duration-200"
-            >
-              {item.name}
-            </a>
+            <div key={item.name} className="relative">
+              {isDropdown(item.name) ? (
+                <button
+                  onClick={() =>
+                    setOpenDropdown(openDropdown === item.name ? null : item.name)
+                  }
+                  className="flex items-center gap-1 nav-link text-sm tracking-wide"
+                >
+                  {item.name}
+                  <ChevronDown size={16} />
+                </button>
+              ) : (
+                <a href={item.href} className="nav-link text-sm tracking-wide">
+                  {item.name}
+                </a>
+              )}
+
+              {openDropdown === item.name && (
+                <div className="absolute top-full left-0 mt-2 bg-[#0a1224] shadow-lg rounded-md py-2 w-48 z-50">
+                  {dropdownItems[item.name].map((subItem) => (
+                    <button
+                      key={subItem.name}
+                      onClick={() =>
+                        item.name === "Products"
+                          ? handleProductClick(subItem.id)
+                          : item.name === "Services"
+                          ? handleServiceClick()
+                          : setIsMenuOpen(false)
+                      }
+                      className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-cyan-700/30 transition"
+                    >
+                      {subItem.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -64,7 +152,6 @@ export default function Navbar() {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden text-white"
-          aria-label="Toggle Menu"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -74,14 +161,47 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-[#050d1b]/95 backdrop-blur-md text-white px-6 py-4 space-y-4 transition-all duration-300">
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsMenuOpen(false)}
-              className="block hover:text-cyan-300 font-medium"
-            >
-              {item.name}
-            </a>
+            <div key={item.name}>
+              <a
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="block nav-link text-sm tracking-wide"
+              >
+                {item.name}
+              </a>
+              {isDropdown(item.name) && (
+                <div className="ml-4 mt-1 space-y-2">
+                  {dropdownItems[item.name].map((subItem) =>
+                    item.name === "Products" ? (
+                      <button
+                        key={subItem.name}
+                        onClick={() => handleProductClick(subItem.id)}
+                        className="block text-left text-sm text-gray-300 hover:text-white"
+                      >
+                        {subItem.name}
+                      </button>
+                    ) : item.name === "Services" ? (
+                      <button
+                        key={subItem.name}
+                        onClick={() => handleServiceClick()}
+                        className="block text-left text-sm text-gray-300 hover:text-white"
+                      >
+                        {subItem.name}
+                      </button>
+                    ) : (
+                      <a
+                        key={subItem.name}
+                        href={subItem.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="block text-sm text-gray-300 hover:text-white"
+                      >
+                        {subItem.name}
+                      </a>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       )}
