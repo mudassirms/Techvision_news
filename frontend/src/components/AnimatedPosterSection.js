@@ -46,7 +46,7 @@ export default function AnimatedPosterSection() {
           className="rounded-3xl overflow-hidden" // Removed shadow
         >
           <Image
-            src="/Explore3.png"
+            src="D:\Maverickgnite_website\frontend\public\explore3.png"
             alt="Animated Poster"
             width={500}
             height={500}
