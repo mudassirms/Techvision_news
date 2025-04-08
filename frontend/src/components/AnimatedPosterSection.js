@@ -26,28 +26,38 @@ export default function AnimatedPosterSection() {
       ref={ref}
       className="w-full bg-[#050d1b] py-20 px-6 flex flex-col lg:flex-row items-center justify-between gap-10"
     >
+      {/* 📦 Image without shadow or glow */}
       <motion.div
         animate={controls}
         transition={{ duration: 0.8 }}
         className="w-full max-w-md flex-shrink-0"
       >
         <motion.div
-          animate={{ y: [0, -15, 0], rotate: [0, 1, -1, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="shadow-xl rounded-xl overflow-hidden"
+          animate={{
+            rotateX: [0, 5, -5, 0],
+            rotateY: [0, -5, 5, 0],
+            scale: [1, 1.03, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="rounded-3xl overflow-hidden" // Removed shadow
         >
           <Image
-  src="/Robo.png"
-  alt="Animated Poster"
-  width={400}
-  height={400}
-  priority
-  unoptimized // This skips Vercel's optimization pipeline
-/>
-
+            src="/Explore3.png"
+            alt="Animated Poster"
+            width={500}
+            height={500}
+            priority
+            unoptimized
+            className="rounded-3xl" // Keep soft corners only
+          />
         </motion.div>
       </motion.div>
 
+      {/* ✍️ Text content */}
       <motion.div
         animate={controlsText}
         transition={{ duration: 0.8, delay: 0.2 }}

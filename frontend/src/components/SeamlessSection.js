@@ -61,7 +61,7 @@ export default function SeamlessSection() {
           viewport={{ once: false, amount: 0.3 }}
           className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
         >
-          Our main focus is on AI-driven software development and integration. We leverage cutting-edge technology to build intelligent, scalable solutions that transform businesses and accelerate digital innovation.
+          Empower your financial platform with intelligent systems — from risk modeling to predictive analytics — all powered by cutting-edge AI.
         </motion.p>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

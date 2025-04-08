@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
-          <Link href="/" className="flex items-center mb-3">
+          <Link href="/" className="flex items-center mb-3 space-x-2">
             <img
               src="/Newlogo.png"
               alt="Maverick Ignite Logo"
@@ -23,19 +23,30 @@ export default function Footer() {
             Maverick Ignite LLP specializes in AI software development, data
             management, and system integration solutions.
           </p>
-          <div className="flex space-x-3 mt-4">
+          <div className="flex space-x-4 mt-4 text-xl">
             <a
               href="https://www.linkedin.com/company/maverick-ignite-solutions-llp/"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-cyan-400 transition-colors duration-300"
             >
-              <FaLinkedin className="hover:text-cyan-400" />
+              <FaLinkedin />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="hover:text-cyan-400" />
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cyan-400 transition-colors duration-300"
+            >
+              <FaTwitter />
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <FaGithub className="hover:text-cyan-400" />
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cyan-400 transition-colors duration-300"
+            >
+              <FaGithub />
             </a>
           </div>
         </div>
