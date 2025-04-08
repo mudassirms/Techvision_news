@@ -20,10 +20,10 @@ export default function Navbar() {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Team", href: "#team" },
+    { name: "Products", href: "#products" }, // ✅ New Product link
     { name: "Why Us", href: "#why-us" },
     { name: "Contact", href: "#contact" },
-    { name: "Careers", href: "/careers" }, // still a separate page
+    { name: "Careers", href: "/careers" },
   ];
 
   return (

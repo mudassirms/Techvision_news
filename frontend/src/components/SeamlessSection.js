@@ -34,11 +34,6 @@ export default function SeamlessSection() {
       desc: 'Train, fine-tune, and deploy models specifically built for your business domain.',
       icon: '🔬',
     },
-    {
-      title: 'Smart Billing Software',
-      desc: 'AI-powered billing and invoicing systems with automated reconciliation and reporting.',
-      icon: '🧾',
-    },
   ];
 
   return (

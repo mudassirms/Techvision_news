@@ -240,3 +240,56 @@
   .navbar-glow {
     animation: glowPulse 3s ease-in-out infinite;
   }
+  .react-phone-input-container .flag-dropdown .country-list .country:hover {
+    background-color: #374151 !important; /* dark gray on hover */
+    color: #fff !important; /* maintain white text */
+  }
+  
+  .react-phone-input-container .flag-dropdown .country-list .country {
+    background-color: #1f2937 !important; /* base background */
+    color: #fff !important; /* base text color */
+  }
+/* Phone input field itself */
+.react-tel-input .form-control {
+  background-color: #1f2937 !important; /* dark gray */
+  color: white !important;
+  border: 1px solid #4b5563 !important; /* tailwind gray-600 */
+}
+
+/* Dropdown container */
+.react-tel-input .flag-dropdown {
+  background-color: #1f2937 !important;
+  border: 1px solid #4b5563 !important;
+}
+
+/* Dropdown country list */
+.react-tel-input .country-list {
+  background-color: #1f2937 !important;
+  color: white !important;
+  border: 1px solid #4b5563 !important;
+}
+
+/* Country list items */
+.react-tel-input .country-list .country {
+  background-color: #1f2937 !important;
+  color: white !important;
+}
+
+/* Country list items on hover */
+.react-tel-input .country-list .country:hover {
+  background-color: #374151 !important; /* slightly lighter dark */
+  color: white !important;
+}
+
+/* Search box inside dropdown */
+.react-tel-input .search-box {
+  background-color: #1f2937 !important;
+  color: white !important;
+  border: 1px solid #4b5563 !important;
+}
+
+/* Selected flag hover */
+.react-tel-input .selected-flag:hover {
+  background-color: #1f2937 !important;
+}
+  

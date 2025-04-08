@@ -43,16 +43,16 @@ export default function AnimatedPosterSection() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="rounded-3xl overflow-hidden" // Removed shadow
+          className="rounded-3xl overflow-hidden"
         >
           <Image
-            src="D:\Maverickgnite_website\frontend\public\explore3.png"
+            src="/explore3.png"
             alt="Animated Poster"
             width={500}
             height={500}
             priority
             unoptimized
-            className="rounded-3xl" // Keep soft corners only
+            className="rounded-3xl"
           />
         </motion.div>
       </motion.div>

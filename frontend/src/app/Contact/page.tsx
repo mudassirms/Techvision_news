@@ -1,75 +1,47 @@
 "use client";
-import React, { useState } from "react";
+
+import React from "react";
+import dynamic from "next/dynamic";
+import { Mail, Phone, MapPin } from "lucide-react";
+
+// Dynamically import ContactForm (no SSR)
+const ContactForm = dynamic(() => import("@/components/ContactForm"), { ssr: false });
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        alert("Message sent!");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        alert("Failed to send message");
-      }
-    } catch (error) {
-      alert("Error occurred");
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-white p-6">
-      <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
-          rows={4}
-          required
-        ></textarea>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-          Send Message
-        </button>
-      </form>
+    <div className="min-h-screen bg-gray-900 text-white py-10 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Page Heading */}
+        <h1 className="text-4xl font-extrabold text-center mb-6">Contact Us</h1>
+        <p className="text-center text-gray-300 mb-10">
+          We'd love to hear from you. Fill out the form below and we’ll be in touch shortly.
+        </p>
+
+        {/* Contact Form */}
+        <ContactForm />
+
+        {/* Company Contact Info */}
+        <div className="mt-12 border-t border-gray-700 pt-10">
+          <h2 className="text-2xl font-bold mb-6 text-center">Our Contact Details</h2>
+          <div className="grid md:grid-cols-3 gap-6 text-center">
+            <div className="flex flex-col items-center gap-2">
+              <Mail className="w-6 h-6 text-blue-500" />
+              <p className="text-gray-300">Email</p>
+              <p className="font-semibold">contact@yourcompany.com</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Phone className="w-6 h-6 text-blue-500" />
+              <p className="text-gray-300">Phone</p>
+              <p className="font-semibold">+1 (123) 456-7890</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <MapPin className="w-6 h-6 text-blue-500" />
+              <p className="text-gray-300">Address</p>
+              <p className="font-semibold">123 Fintech Ave, Suite 456<br />San Francisco, CA</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

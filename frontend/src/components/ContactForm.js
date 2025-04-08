@@ -4,37 +4,51 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import { motion } from "framer-motion";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === "email") {
-      setErrors({
-        ...errors,
+      setErrors((prev) => ({
+        ...prev,
         email: /\S+@\S+\.\S+/.test(value) ? "" : "Invalid email address",
-      });
+      }));
     } else {
-      setErrors({ ...errors, [name]: value ? "" : `${name} is required` });
+      setErrors((prev) => ({ ...prev, [name]: value ? "" : `${name} is required` }));
     }
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData((prev) => ({ ...prev, phone: value }));
+    setErrors((prev) => ({ ...prev, phone: value ? "" : "Phone number is required" }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
+    const { name, email, message, phone } = formData;
+
+    if (!name || !email || !message || !phone) {
       toast.error("Please fill out all fields.");
       return;
     }
 
-    if (errors.email) {
-      toast.error("Please enter a valid email address.");
+    if (errors.email || errors.phone) {
+      toast.error("Please correct the errors.");
       return;
     }
 
@@ -42,27 +56,27 @@ export default function ContactForm() {
 
     emailjs
       .send(
-        "service_ahyiltc",
-        "template_1hxwllk",
+        "service_ahyiltc", // replace with your service ID
+        "template_1hxwllk", // replace with your template ID
         {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
+          name,
+          email,
+          phone,
+          message,
+          time: new Date().toLocaleString(),
           title: "New Contact Form Submission",
         },
-        "jcssRf25WKtjOrVv0"
+        "jcssRf25WKtjOrVv0" // replace with your public key
       )
       .then(() => {
         toast.success("✅ Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
       })
       .catch((error) => {
         console.error("EmailJS Error:", error);
         toast.error("❌ Something went wrong. Please try again.");
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -83,7 +97,7 @@ export default function ContactForm() {
           placeholder="Your Name"
           className={`w-full p-3 rounded bg-gray-700 border ${
             errors.name ? "border-red-500" : "border-gray-600"
-          } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          } focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
           required
         />
         {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
@@ -96,10 +110,34 @@ export default function ContactForm() {
           placeholder="Your Email"
           className={`w-full p-3 rounded bg-gray-700 border ${
             errors.email ? "border-red-500" : "border-gray-600"
-          } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          } focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
           required
         />
         {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+
+        <PhoneInput
+  country={"us"}
+  value={formData.phone}
+  onChange={handlePhoneChange}
+  enableSearch={true}
+  searchPlaceholder="Search country"
+  preferredCountries={["us", "in", "gb", "ca"]}
+  inputClass="!w-full !p-3 !bg-gray-700 !text-white !border !border-gray-600 !rounded"
+  buttonClass="!bg-gray-700"
+  dropdownClass="!bg-gray-800 !text-white !z-[1000] !max-h-[250px] !overflow-y-auto !border !border-gray-700"
+  containerClass="!w-full"
+  searchStyle={{
+    backgroundColor: "#1f2937", // bg-gray-800
+    color: "#ffffff",
+    border: "1px solid #4b5563",
+    borderRadius: "0.35rem",
+    padding: "0.5rem",
+    marginBottom: "0.5rem",
+  }}
+/>
+
+
+        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
 
         <textarea
           name="message"
@@ -109,7 +147,7 @@ export default function ContactForm() {
           rows="4"
           className={`w-full p-3 rounded bg-gray-700 border ${
             errors.message ? "border-red-500" : "border-gray-600"
-          } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          } focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
           required
         ></textarea>
         {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}

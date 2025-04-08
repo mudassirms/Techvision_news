@@ -60,62 +60,58 @@ export default function Home() {
             </svg>
           </a>
         </header>
-{/* ✅ About Section - With Scroll Animation on Vision & Mission */}
-<section id="about" className="px-6 md:px-10 py-16 scroll-mt-24">
-  <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
-    
-    {/* ✅ Centered Heading */}
-    <h2 className="text-4xl font-bold text-[#00ffc2] text-center">Who We Are?</h2>
-    
-    <p className="mt-4 text-lg text-gray-300 text-center max-w-3xl mx-auto">
-      We are a technology-driven company specializing in software development, AI integration, and scalable data solutions that empower businesses to innovate and grow.
-    </p>
 
-    <div className="grid md:grid-cols-2 gap-8 mt-10">
-      
-      {/* 🔥 Our Vision Card with Animation */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="bg-[#0b1628] p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
-      >
-        <h3 className="text-2xl font-semibold text-[#00ffc2] mb-3">Our Vision</h3>
-        <p className="text-gray-300">
-          To drive digital transformation by creating intelligent, efficient, and scalable technology solutions that solve real-world business challenges.
-        </p>
-      </motion.div>
+        {/* ✅ About Section - Vision & Mission Animates on Scroll */}
+        <section id="about" className="px-6 md:px-10 py-16 scroll-mt-24">
+          <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
+            <h2 className="text-4xl font-bold text-[#00ffc2] text-center">Who We Are?</h2>
+            <p className="mt-4 text-lg text-gray-300 text-center max-w-3xl mx-auto">
+              We are a technology-driven company specializing in software development, AI integration, and scalable data solutions that empower businesses to innovate and grow.
+            </p>
 
-      {/* 🔥 Our Mission Card with Animation */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="bg-[#0b1628] p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
-      >
-        <h3 className="text-2xl font-semibold text-[#00ffc2] mb-3">Our Mission</h3>
-        <p className="text-gray-300">
-          To empower businesses with cutting-edge software, AI-driven automation, and robust data strategies that lead to long-term success.
-        </p>
-      </motion.div>
+            <div className="grid md:grid-cols-2 gap-8 mt-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="bg-[#0b1628] p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
+              >
+                <h3 className="text-2xl font-semibold text-[#00ffc2] mb-3">Our Vision</h3>
+                <p className="text-gray-300">
+                  To drive digital transformation by creating intelligent, efficient, and scalable technology solutions that solve real-world business challenges.
+                </p>
+              </motion.div>
 
-    </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="bg-[#0b1628] p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
+              >
+                <h3 className="text-2xl font-semibold text-[#00ffc2] mb-3">Our Mission</h3>
+                <p className="text-gray-300">
+                  To empower businesses with cutting-edge software, AI-driven automation, and robust data strategies that lead to long-term success.
+                </p>
+              </motion.div>
+            </div>
 
-    <div className="mt-10">
-      <h3 className="text-2xl font-bold text-[#00ffc2]">How We Help Businesses</h3>
-      <ul className="mt-4 text-gray-100 list-disc list-inside space-y-2">
-        <li><span className="text-white font-semibold">Need a software solution?</span> We develop web-based enterprise applications.</li>
-        <li><span className="text-white font-semibold">Want to integrate AI?</span> We embed ML models and automation into apps.</li>
-        <li><span className="text-white font-semibold">Automate workflows?</span> We simplify operations with smart tools.</li>
-        <li><span className="text-white font-semibold">Data overload?</span> We manage big data and cloud architecture efficiently.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
+            <div className="mt-10">
+              <h3 className="text-2xl font-bold text-[#00ffc2]">How We Help Businesses</h3>
+              <ul className="mt-4 text-gray-100 list-disc list-inside space-y-2">
+                <li><span className="text-white font-semibold">Need a software solution?</span> We develop web-based enterprise applications.</li>
+                <li><span className="text-white font-semibold">Want to integrate AI?</span> We embed ML models and automation into apps.</li>
+                <li><span className="text-white font-semibold">Automate workflows?</span> We simplify operations with smart tools.</li>
+                <li><span className="text-white font-semibold">Data overload?</span> We manage big data and cloud architecture efficiently.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+          {/* ✅ Services Section */}
+          <section id="services" className="scroll-mt-24">
+          <Services />
+        </section>
 
         {/* 🔥 Poster and AI Sections */}
         <AnimatedPosterSection />
@@ -141,10 +137,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ✅ Services Section */}
-        <section id="services" className="scroll-mt-24">
-          <Services />
-        </section>
+      
 
         {/* ✅ Why Choose Us */}
         <section id="why-us" className="px-6 md:px-10 py-16 scroll-mt-24">
