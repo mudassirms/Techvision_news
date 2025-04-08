@@ -292,4 +292,24 @@
 .react-tel-input .selected-flag:hover {
   background-color: #1f2937 !important;
 }
-  
+/* Fix Phone Input Dropdown Colors */
+.react-tel-input .country-list .country {
+  background-color: #1f2937 !important; /* Dark background */
+  color: white !important; /* White text */
+}
+
+.react-tel-input .country-list .country:hover {
+  background-color: #374151 !important; /* Hover dark background */
+  color: white !important;
+}
+
+.react-tel-input .country-list {
+  background-color: #1f2937 !important;
+  color: white !important;
+}
+
+.react-tel-input .search-box {
+  background-color: #1f2937 !important;
+  color: white !important;
+  border: 1px solid #374151 !important;
+}
