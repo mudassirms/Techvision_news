@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Link from "next/link";
 import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
@@ -6,7 +7,7 @@ import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-[#050d1b] text-white py-10 px-4 border-t border-[#1f2a3a] text-sm">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
           <Link href="/" className="flex items-center mb-3 space-x-2">
@@ -83,7 +84,7 @@ export default function Footer() {
             Phone: <a href="tel:+919036666910" className="hover:text-cyan-300">+91 9036666910</a>
           </p>
           <p className="text-gray-300 text-sm mt-2">
-            Address:{" "}
+            Address: {" "}
             <a
               href="https://www.google.com/maps/place/3rd+Floor,+Vaishnavi+Signature,+Panathur+Main+Rd,+Bengaluru,+Karnataka+560103"
               target="_blank"
@@ -97,11 +98,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom Strip */}
-      <div className="border-t border-[#1f2a3a] mt-12 pt-8 text-center text-gray-400 text-sm">
+      <div className="border-t border-[#1f2a3a] mt-12 pt-8 text-center text-gray-400 text-sm px-4">
         <p className="mb-2">
           © 2025 <span className="text-white font-semibold">Maverick Ignite Solutions LLP</span>. All rights reserved.
         </p>
-        <div className="flex justify-center gap-5 flex-wrap">
+        <div className="flex justify-center gap-3 flex-wrap text-xs sm:text-sm">
           <Link href="/privacy-policy" className="hover:text-cyan-300">Privacy Policy</Link>
           <span>|</span>
           <Link href="/terms-of-service" className="hover:text-cyan-300">Terms of Service</Link>

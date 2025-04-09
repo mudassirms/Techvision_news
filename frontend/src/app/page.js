@@ -17,29 +17,29 @@ export default function Home() {
 
       {/* ✅ Main Content */}
       <main className="flex-grow">
-        {/* ✅ Hero Section */}
+
+        {/* ✅ Hero Section - Updated for Glowing AI Look */}
         <header
           id="home"
-          className="relative w-full min-h-screen flex items-center justify-center text-white px-4 scroll-mt-20"
+          className="relative w-full h-screen flex items-center justify-center text-white px-4 bg-[#050d1b] overflow-hidden"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl w-full gap-10">
-            {/* Text Content - Left Side */}
-            <div className="z-10 w-full md:w-1/2 text-center md:text-left">
-              <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fadeIn">
-                Powering the Future with <span className="text-[#00fff7]">AI</span>
-              </h2>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 animate-fadeIn delay-200">
+          <div className="absolute inset-0 z-0 bg-gradient-to-tr from-[#00fff7]/10 via-[#00ffc2]/5 to-transparent pointer-events-none" />
+
+          <div className="flex flex-col md:flex-row items-center justify-between max-w-7xl w-full gap-10 z-10">
+            {/* Text Content */}
+            <div className="flex flex-col justify-center items-start text-left px-4 md:px-10 max-w-xl">
+              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-green-300 to-teal-400 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(0,255,200,0.4)] animate-glow">
+                Powering the Future with AI
+              </h1>
+              <p className="text-lg md:text-xl text-gray-300 mb-6">
                 Software Development • AI Integration • Data Solutions • System Modernization
               </p>
-              <a
-                href="#contact"
-                className="inline-block px-8 py-4 bg-[#00fff7] hover:bg-[#00e6d6] text-black font-semibold text-lg rounded-full shadow-lg transition transform hover:scale-105 duration-300 animate-fadeIn delay-500"
-              >
+              <button className="bg-gradient-to-r from-cyan-400 to-cyan-300 text-black font-semibold py-2 px-6 rounded-full hover:opacity-90 transition duration-300 shadow-lg">
                 Get Started
-              </a>
+              </button>
             </div>
 
-            {/* AI Image with Glow - Right Side */}
+            {/* Floating AI Image */}
             <div className="relative w-full md:w-1/2 flex justify-center items-center">
               <div className="absolute w-[300px] h-[300px] bg-[#00fff7] blur-[80px] opacity-20 right-0 top-1/2 transform -translate-y-1/2 z-0 rounded-full" />
               <img
@@ -50,21 +50,55 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll Down Arrow */}
+          {/* Scroll Arrow */}
           <a
             href="#about"
-            className="absolute bottom-6 sm:bottom-10 animate-bounce text-gray-300 hover:text-[#00fff7] transition duration-300"
+            className="absolute bottom-6 sm:bottom-10 animate-bounce text-gray-300 hover:text-[#00fff7] transition duration-300 z-10"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-8 h-8 sm:w-10 sm:h-10">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </a>
+
+          {/* Animations */}
+          <style jsx>{`
+            .animate-float {
+              animation: float 6s ease-in-out infinite;
+            }
+
+            @keyframes float {
+              0% {
+                transform: translateY(0px);
+              }
+              50% {
+                transform: translateY(-15px);
+              }
+              100% {
+                transform: translateY(0px);
+              }
+            }
+
+            .animate-glow {
+              animation: shimmer 5s ease-in-out infinite;
+              background-size: 200% 200%;
+            }
+
+            @keyframes shimmer {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
+            }
+          `}</style>
         </header>
 
-        {/* ✅ About Section - Vision & Mission Animates on Scroll */}
+        {/* ✅ About Section */}
         <section id="about" className="px-6 md:px-10 pt-16 pb-4 scroll-mt-24">
-
-
           <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
             <h2 className="text-4xl font-bold text-[#00ffc2] text-center">Who We Are?</h2>
             <p className="mt-4 text-lg text-gray-300 text-center max-w-3xl mx-auto">
@@ -111,14 +145,13 @@ export default function Home() {
           </div>
         </section>
 
-                {/* 🔥 Poster and AI Sections */}
-                <div className="mt-2">
-  <AnimatedPosterSection />
-</div>
+        {/* 🔥 Poster and AI Sections */}
+        <div className="mt-2">
+          <AnimatedPosterSection />
+        </div>
 
-
-          {/* ✅ Services Section */}
-          <section id="services" className="scroll-mt-24">
+        {/* ✅ Services Section */}
+        <section id="services" className="scroll-mt-24">
           <Services />
         </section>
 
@@ -140,13 +173,12 @@ export default function Home() {
               className="inline-block px-8 py-3 bg-[#00ffc2] hover:bg-cyan-300 text-black font-semibold rounded-full shadow-md transition"
             >
               Discover Our Products
-
             </a>
           </div>
         </section>
 
-       {/* ✅ Product Section */}
-       <Product />
+        {/* ✅ Product Section */}
+        <Product />
 
         {/* ✅ Why Choose Us */}
         <section id="why-us" className="px-6 md:px-10 py-16 scroll-mt-24">
