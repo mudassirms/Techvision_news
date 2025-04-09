@@ -43,30 +43,14 @@ body {
 /*======================
   Utility Classes
 =======================*/
-.bg-primary {
-  background-color: var(--primary);
-}
-.text-primary {
-  color: var(--primary);
-}
-.bg-secondary {
-  background-color: var(--secondary);
-}
-.text-secondary {
-  color: var(--secondary);
-}
-.text-accent {
-  color: var(--accent);
-}
-.bg-accent {
-  background-color: var(--accent);
-}
-.text-highlight {
-  color: var(--highlight);
-}
-.bg-highlight {
-  background-color: var(--highlight);
-}
+.bg-primary { background-color: var(--primary); }
+.text-primary { color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+.text-secondary { color: var(--secondary); }
+.text-accent { color: var(--accent); }
+.bg-accent { background-color: var(--accent); }
+.text-highlight { color: var(--highlight); }
+.bg-highlight { background-color: var(--highlight); }
 
 /*======================
   Buttons
@@ -88,38 +72,6 @@ body {
 }
 
 /*======================
-  Footer
-=======================*/
-footer a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-footer a:hover {
-  color: var(--highlight);
-}
-
-.footer-bottom {
-  text-align: center;
-  width: 100%;
-  padding-top: 1rem;
-  border-top: 1px solid #333;
-  margin-top: 2rem;
-}
-.footer-bottom p {
-  margin: 0;
-  color: var(--foreground);
-}
-.footer-bottom a {
-  margin: 0 0.75rem;
-  text-decoration: none;
-  color: var(--accent);
-}
-.footer-bottom a:hover {
-  color: var(--highlight);
-}
-
-/*======================
   Hero Section
 =======================*/
 .hero-section {
@@ -127,11 +79,15 @@ footer a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #0a0a0a, #1e1e1e);
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+
+  background: linear-gradient(135deg, var(--background), var(--secondary));
+  color: var(--foreground);
 }
+
+
 .hero-content {
   display: flex;
   justify-content: space-between;
@@ -204,7 +160,7 @@ footer a:hover {
 }
 
 /*======================
-  Navbar Links & Glow
+  Navbar
 =======================*/
 @keyframes glowPulse {
   0%, 100% {
@@ -256,7 +212,7 @@ footer a:hover {
 }
 
 /*======================
-  Phone Input Styling
+  Phone Input
 =======================*/
 .react-phone-input-container .flag-dropdown .country-list .country,
 .react-tel-input .country-list .country {
@@ -308,13 +264,12 @@ footer a:hover {
     transform: translateY(0px) rotate(0deg) scale(1);
   }
 }
-
 .animate-float {
   animation: float-rotate 5s ease-in-out infinite;
 }
 
 /*======================
-  Scrollbar Styling
+  Scrollbar
 =======================*/
 ::-webkit-scrollbar {
   width: 8px;
@@ -328,27 +283,23 @@ footer a:hover {
 }
 
 /*======================
-  Global Background Image Layer
+  Background Layer
 =======================*/
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/Iron_Theme2.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  opacity: 0.5;
-  filter: none;
-  z-index: -1;
-  pointer-events: none;
-}
-
 html, body {
   position: relative;
   z-index: 0;
+}
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
 }

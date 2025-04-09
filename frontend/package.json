@@ -23,7 +23,8 @@
     "react-phone-input-2": "^2.15.1",
     "react-simple-typewriter": "^5.0.1",
     "react-toastify": "^11.0.5",
-    "resend": "^4.2.0"
+    "resend": "^4.2.0",
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

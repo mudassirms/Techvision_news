@@ -1,167 +1,66 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
-import { useCallback } from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/navigation"; // ✅ FIXED
+import heroImage from "../../public/hero-image.png";
 
-export default function Hero() {
-  const particlesInit = useCallback(async (engine) => {
-    await loadFull(engine);
-  }, []);
+const Hero = () => {
+  const router = useRouter();
+
+  const handleNavigate = () => {
+    router.push("/contact"); // ✅ App Router navigation
+  };
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-between bg-[#0f172a] text-white px-6 md:px-16 py-20 relative overflow-hidden">
-
-      {/* 🔹 Animated Background */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        className="absolute inset-0 z-0"
-        options={{
-          background: {
-            color: {
-              value: '#0f172a',
-            },
-          },
-          fpsLimit: 60,
-          interactivity: {
-            detectsOn: 'canvas',
-            events: {
-              onHover: {
-                enable: true,
-                mode: 'repulse',
-              },
-              resize: true,
-            },
-          },
-          particles: {
-            color: {
-              value: '#00ffc3',
-            },
-            links: {
-              color: '#00ffc3',
-              distance: 100,
-              enable: true,
-              opacity: 0.1,
-              width: 1,
-            },
-            move: {
-              enable: true,
-              speed: 0.3,
-              direction: 'none',
-              random: false,
-              straight: false,
-              outModes: 'out',
-            },
-            number: {
-              value: 40,
-              density: {
-                enable: true,
-                area: 800,
-              },
-            },
-            opacity: {
-              value: 0.3,
-            },
-            shape: {
-              type: 'circle',
-            },
-            size: {
-              value: { min: 1, max: 3 },
-            },
-          },
-          detectRetina: true,
-        }}
-      />
-
-      {/* 🔸 Left Content */}
-      <div className="w-full md:w-1/2 space-y-6 z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight bg-gradient-to-r from-cyan-300 via-green-300 to-teal-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(0,255,200,0.5)] animate-shimmer tracking-tight"
-        >
-          Powering the Future with AI
-        </motion.h1>
-
-        <motion.p
+    <section
+      id="home"
+      className="min-h-[80vh] w-full px-4 sm:px-10 py-16 bg-[var(--background)] text-[var(--foreground)] flex items-center justify-center"
+    >
+      <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-14">
+        {/* Text */}
+        <motion.div
+          className="text-center md:text-left flex-1"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 1 }}
-          className="text-lg sm:text-xl text-gray-400 max-w-xl leading-relaxed"
+          transition={{ duration: 1 }}
         >
-          Transforming industries with intelligent solutions — one algorithm at a time.
-        </motion.p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Maverick Ignite
+          </h1>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 text-primary">
+            Innovate. Automate. Elevate.
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-xl mx-auto md:mx-0">
+            Empowering businesses with cutting-edge AI solutions tailored for growth,
+            efficiency, and innovation.
+          </p>
 
+          <button className="glow-btn mt-6" onClick={handleNavigate}>
+            Get Started
+          </button>
+        </motion.div>
+
+        {/* Image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
+          className="flex justify-center items-center flex-1"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
-          <Link href="#services">
-            <button className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition duration-300">
-              Explore Our Services
-            </button>
-          </Link>
+          <div className="relative w-[220px] sm:w-[300px] md:w-[400px]">
+            <Image
+              src={heroImage}
+              alt="AI Illustration"
+              className="floating-image"
+              priority
+            />
+          </div>
         </motion.div>
       </div>
-
-      {/* 🔸 Hero Image */}
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        className="w-full md:w-1/2 mt-10 md:mt-0 relative z-10"
-      >
-        <Image
-          src="/hero.png"
-          alt="Hero Image"
-          width={600}
-          height={600}
-          className="w-full object-contain animate-floating"
-          priority
-        />
-      </motion.div>
-
-      {/* 🎯 Floating + Shimmer Animation Styles */}
-      <style jsx>{`
-        .animate-floating {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-          0% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-15px);
-          }
-          100% {
-            transform: translateY(0px);
-          }
-        }
-
-        .animate-shimmer {
-          background-size: 300% 300%;
-          animation: shimmer 5s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
     </section>
   );
-}
+};
+
+export default Hero;

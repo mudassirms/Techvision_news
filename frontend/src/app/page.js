@@ -8,97 +8,107 @@ import Footer from '../components/Footer';
 import Product from '../components/Product';
 import IntelligentBusinessSection from "@/components/IntelligentBusinessSection";
 import AnimatedPosterSection from "@/components/AnimatedPosterSection";
+import SlidingBanner from '@/components/SlidingBanner';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#050d1b] text-white scroll-smooth overflow-auto font-sans">
       {/* ✅ Navbar */}
       <Navbar />
-
+{/* ✅ Sliding Banner Below Navbar, with Gap */}
+<section className="w-full pt-24 pb-4 bg-[#050d1b] text-white text-center z-10 relative">
+          <SlidingBanner />
+        </section>
       {/* ✅ Main Content */}
       <main className="flex-grow">
 
-        {/* ✅ Hero Section - Updated for Glowing AI Look */}
+
+        {/* ✅ Hero Section */}
         <header
-  id="home"
-  className="relative w-full min-h-screen flex items-center justify-center bg-[#050d1b] px-4 sm:px-6 lg:px-12 pt-24 pb-10 overflow-hidden"
->
-  {/* Background glow */}
-  <div className="absolute inset-0 z-0 bg-gradient-to-tr from-[#00fff7]/10 via-[#00ffc2]/5 to-transparent pointer-events-none" />
+          id="home"
+          className="relative w-full min-h-screen flex items-center justify-center bg-[#050d1b] px-4 sm:px-6 lg:px-12 pt-12 pb-10 overflow-hidden"
+        >
+          {/* Background glow */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-tr from-[#00fff7]/10 via-[#00ffc2]/5 to-transparent pointer-events-none" />
 
-  {/* Main content container */}
-  <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl gap-10">
-    
-    {/* Text Section */}
-    <div className="text-left max-w-lg w-full">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-green-300 to-teal-400 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(0,255,200,0.4)] animate-glow">
-        Powering the Future with AI
-      </h1>
-      <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6">
-        Software Development • AI Integration • Data Solutions • System Modernization
-      </p>
-      <button className="bg-gradient-to-r from-cyan-400 to-cyan-300 text-black font-semibold py-2 px-6 rounded-full hover:opacity-90 transition duration-300 shadow-lg">
-        Get Started
-      </button>
-    </div>
+          {/* Main content container */}
+          <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl gap-10">
+            
+            {/* Text Section */}
+            <div className="text-left max-w-lg w-full">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-green-300 to-teal-400 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(0,255,200,0.4)] animate-glow">
+                Powering the Future with AI
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6">
+                Software Development • AI Integration • Data Solutions • System Modernization
+              </p>
+             <a href="#contact">
+  <button className="relative px-8 py-3 rounded-full font-semibold text-black bg-gradient-to-r from-cyan-400 to-cyan-300 overflow-hidden shadow-lg hover:opacity-100 transition-all duration-300 group">
+    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-300 blur-md opacity-30 group-hover:opacity-60 transition-all duration-300 animate-pulse" />
+    <span className="relative z-10">Get Started</span>
+  </button>
+</a>
 
-    {/* Floating AI Image */}
-    <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md flex justify-center">
-      <div className="absolute w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] bg-[#00fff7] blur-[80px] opacity-20 right-0 top-1/2 transform -translate-y-1/2 z-0 rounded-full" />
-      <img
-        src="/Image.png"
-        alt="Floating AI Visual"
-        className="relative w-full animate-float z-10"
-      />
-    </div>
-  </div>
 
-  {/* Scroll Arrow */}
-  <a
-    href="#about"
-    className="absolute bottom-6 sm:bottom-10 animate-bounce text-gray-300 hover:text-[#00fff7] transition duration-300 z-10"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  </a>
+            </div>
 
-  {/* Animations */}
-  <style jsx>{`
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
+            {/* Floating AI Image */}
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md flex justify-center">
+              <div className="absolute w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] bg-[#00fff7] blur-[80px] opacity-20 right-0 top-1/2 transform -translate-y-1/2 z-0 rounded-full" />
+              <img
+                src="/Image.png"
+                alt="Floating AI Visual"
+                className="relative w-full animate-float z-10"
+              />
+            </div>
+          </div>
 
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-15px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
-    }
+          {/* Scroll Arrow */}
+          <a
+            href="#about"
+            className="absolute bottom-6 sm:bottom-10 animate-bounce text-gray-300 hover:text-[#00fff7] transition duration-300 z-10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
 
-    .animate-glow {
-      animation: shimmer 5s ease-in-out infinite;
-      background-size: 200% 200%;
-    }
+          {/* Animations */}
+          <style jsx>{`
+            .animate-float {
+              animation: float 6s ease-in-out infinite;
+            }
 
-    @keyframes shimmer {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-  `}</style>
-</header>
+            @keyframes float {
+              0% {
+                transform: translateY(0px);
+              }
+              50% {
+                transform: translateY(-15px);
+              }
+              100% {
+                transform: translateY(0px);
+              }
+            }
+
+            .animate-glow {
+              animation: shimmer 5s ease-in-out infinite;
+              background-size: 200% 200%;
+            }
+
+            @keyframes shimmer {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
+            }
+          `}</style>
+        </header>
 
         {/* ✅ About Section */}
         <section id="about" className="px-6 md:px-10 pt-16 pb-4 scroll-mt-24">
