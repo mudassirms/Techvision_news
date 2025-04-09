@@ -8,17 +8,16 @@ import Footer from '../components/Footer';
 import Product from '../components/Product';
 import IntelligentBusinessSection from "@/components/IntelligentBusinessSection";
 import AnimatedPosterSection from "@/components/AnimatedPosterSection";
-import SlidingBanner from '@/components/SlidingBanner';
+
+import WaveSection from "../components/WaveSection";
+import HUDDivider from "../components/HUDDivider";
+
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#050d1b] text-white scroll-smooth overflow-auto font-sans">
       {/* ✅ Navbar */}
       <Navbar />
-{/* ✅ Sliding Banner Below Navbar, with Gap */}
-<section className="w-full pt-24 pb-4 bg-[#050d1b] text-white text-center z-10 relative">
-          <SlidingBanner />
-        </section>
       {/* ✅ Main Content */}
       <main className="flex-grow">
 
@@ -158,6 +157,9 @@ export default function Home() {
           </div>
         </section>
 
+        <WaveSection />
+
+
         {/* 🔥 Poster and AI Sections */}
         <div className="mt-2">
           <AnimatedPosterSection />
@@ -171,7 +173,6 @@ export default function Home() {
         <div className="mt-16">
           <IntelligentBusinessSection />
         </div>
-
         {/* ✅ Banner Section */}
         <section className="w-full py-20 bg-[#1a1a2e]/20 text-white text-center backdrop-blur">
           <div className="max-w-4xl mx-auto px-6">
@@ -192,6 +193,8 @@ export default function Home() {
 
         {/* ✅ Product Section */}
         <Product />
+
+        <HUDDivider /> {/* Futuristic HUD divider */}
 
         {/* ✅ Why Choose Us */}
         <section id="why-us" className="px-6 md:px-10 py-16 scroll-mt-24">

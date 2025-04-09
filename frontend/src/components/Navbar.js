@@ -8,11 +8,11 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [openMobileDropdowns, setOpenMobileDropdowns] = useState({});
   const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
-
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setOpenDropdown(null);
@@ -77,25 +77,32 @@ export default function Navbar() {
     }, 300);
   };
 
+  const toggleMobileDropdown = (itemName) => {
+    setOpenMobileDropdowns((prev) => ({
+      ...prev,
+      [itemName]: !prev[itemName],
+    }));
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-[#050d1b]/90 backdrop-blur-md py-2"
-          : "bg-[#050d1b] py-3"
+          : "bg-[#050d1b] py-2"
       } border-b border-[#1f2a3a]`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between space-x-4 md:space-x-10 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 cursor-pointer">
+        <Link href="/" className="flex items-center space-x-2">
           <img
             src="/Newlogo.png"
             alt="Maverick Ignite Logo"
-            className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
-            MaverickIgnite
-          </span>
+              MaverickIgnite
+            </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -110,7 +117,7 @@ export default function Navbar() {
                   onClick={() =>
                     setOpenDropdown(openDropdown === item.name ? null : item.name)
                   }
-                  className="flex items-center gap-1 nav-link text-sm tracking-wide cursor-pointer"
+                  className="flex items-center gap-1 nav-link tracking-wide cursor-pointer"
                 >
                   {item.name}
                   <ChevronDown size={16} />
@@ -118,7 +125,7 @@ export default function Navbar() {
               ) : (
                 <a
                   href={item.href}
-                  className="nav-link text-sm tracking-wide cursor-pointer"
+                  className="nav-link tracking-wide cursor-pointer"
                 >
                   {item.name}
                 </a>
@@ -172,19 +179,35 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown Nav */}
       {isMenuOpen && (
         <div className="md:hidden bg-[#050d1b]/95 backdrop-blur-md text-white px-5 py-4 space-y-4 transition-all duration-300">
           {navItems.map((item) => (
             <div key={item.name}>
-              <a
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="block nav-link text-sm tracking-wide"
-              >
-                {item.name}
-              </a>
-              {isDropdown(item.name) && (
+              {isDropdown(item.name) ? (
+                <button
+                  onClick={() => toggleMobileDropdown(item.name)}
+                  className="flex justify-between items-center w-full text-sm tracking-wide"
+                >
+                  <span>{item.name}</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-200 ${
+                      openMobileDropdowns[item.name] ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              ) : (
+                <a
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block nav-link text-sm tracking-wide"
+                >
+                  {item.name}
+                </a>
+              )}
+
+              {isDropdown(item.name) && openMobileDropdowns[item.name] && (
                 <div className="ml-4 mt-1 space-y-2">
                   {dropdownItems[item.name].map((subItem) =>
                     item.name === "Products" ? (
