@@ -1,0 +1,22 @@
+/* CustomCursor.css */
+
+.custom-cursor {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #00ffc3;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+    background-color: rgba(0, 255, 195, 0.1);
+    backdrop-filter: blur(2px);
+  }
+  .custom-cursor.clicking {
+    transform: scale(1.8) translate(-50%, -50%);
+    background: rgba(0, 255, 194, 0.6);
+  }
+    

@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.css"; // ✅ Import your custom cursor styles
 import { ThemeProvider } from "next-themes";
-import CustomCursor from "@/components/AnimatedCursor";
-import FloatingParticles from "@/components/FloatingParticles"; // 🌟 Import it
+import CustomCursor from "@/components/CustomCursor"; // ✅ Your custom React 19 cursor
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,12 +34,10 @@ export default function RootLayout({ children }) {
           enableSystem={true}
           disableTransitionOnChange={false}
         >
-          <FloatingParticles /> {/* 🌟 Particle Layer */}
-          <CustomCursor />
+
+          <CustomCursor /> {/* ✨ Your custom animated cursor */}
           <div className="w-full h-full bg-white dark:bg-[#050d1b] transition-colors duration-300">
-            <main className="w-full h-full">
-              {children}
-            </main>
+            <main className="w-full h-full">{children}</main>
           </div>
         </ThemeProvider>
       </body>

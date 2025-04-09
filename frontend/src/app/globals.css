@@ -316,3 +316,58 @@ html, body {
 .animate-pulse {
   animation: glow-pulse 2.5s ease-in-out infinite;
 }
+.custom-cursor,
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.custom-cursor {
+  width: 6px;
+  height: 6px;
+  background-color: #00ffc2;
+  border-radius: 50%;
+  transition: transform 0.1s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-follower {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00ffc2;
+  border-radius: 50%;
+  transition: transform 0.15s ease-out;
+  mix-blend-mode: difference;
+  opacity: 0.5;
+}
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 255, 194, 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: all 0.2s ease-out;
+  mix-blend-mode: difference;
+  box-shadow: 0 0 10px rgba(0, 255, 194, 0.6), 0 0 30px rgba(0, 255, 194, 0.3);
+}
+
+.custom-cursor.cursor-clicked {
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 195, 255, 0.2);
+  box-shadow: 0 0 25px rgba(0, 195, 255, 0.7), 0 0 80px rgba(0, 195, 255, 0.5);
+  transition: all 0.15s ease-in-out;
+}
+/* Hide the default system cursor */
+body, html {
+  cursor: none !important;
+}
