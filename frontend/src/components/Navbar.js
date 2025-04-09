@@ -95,11 +95,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <img
-            src="/Newlogo.png"
-            alt="Maverick Ignite Logo"
-            className="h-8 w-auto object-contain"
-          />
+        <img
+              src="/Newlogo.png"
+              alt="Maverick Ignite Logo"
+              className="h-12 sm:h-16 w-auto object-contain block"
+            />
           <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
               MaverickIgnite
             </span>
