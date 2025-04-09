@@ -9,7 +9,7 @@ export default function WaveSection() {
   useEffect(() => {
     gsap.fromTo(
       ".wave-path",
-      { y: 100 },
+      { y: 120 },
       {
         y: 0,
         scrollTrigger: {
@@ -23,10 +23,10 @@ export default function WaveSection() {
   }, []);
 
   return (
-    <div className="wave-section relative z-0 -mt-10">
+    <div className="wave-section relative z-0 -mt-9">
       <svg
         viewBox="0 0 1440 320"
-        className="w-full h-[120px] sm:h-[160px] md:h-[200px]"
+        className="w-full h-[100px] sm:h-[160px] md:h-[100px]"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >

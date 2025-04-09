@@ -102,7 +102,9 @@ const ProductSection = forwardRef((props, ref) => {
   return (
     <section id="products" className="bg-[#050d1b] text-white py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Products</h2>
+        <h2 className="text-4xl font-bold text-center mb-9">Our Products</h2>
+        <div className="text-center italian-subheading text-xl md:text-2xl text-white my-8 px-2">
+        Explore our suite of smart, scalable, and AI-driven products — designed to automate support, unlock insights, and streamline communication.</div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product, idx) => (
             <motion.div

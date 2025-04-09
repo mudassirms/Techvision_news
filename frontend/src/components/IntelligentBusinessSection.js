@@ -1,93 +1,69 @@
-// components/IntelligentBusinessSection.jsx
-'use client';
-
-import { motion } from 'framer-motion';
 import {
   Brain,
-  Cloud,
-  ShieldCheck,
-  Activity,
+  Building2,
+  BarChart2,
+  Cable,
   Server,
-  TrendingUp,
+  Handshake,
 } from 'lucide-react';
 
 const features = [
   {
     icon: Brain,
-    title: 'AI-Powered Intelligence',
-    description: 'Leverage advanced machine learning and real-time decision-making.',
+    title: 'AI-First Engineering',
+    description: 'We infuse artificial intelligence into the core of every solution — enabling smarter automation, intelligent insights, and adaptive systems.',
   },
   {
-    icon: Cloud,
-    title: 'Cloud-Native Infrastructure',
-    description: 'Scalable, secure, and fast cloud deployments tailored for growth.',
+    icon: Building2,
+    title: 'Enterprise-Ready Solutions',
+    description: 'Our platforms are built for scale, performance, and security — designed to meet the demands of growing businesses and complex operations.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Enterprise Security',
-    description: 'End-to-end encryption and robust access control for all systems.',
+    icon: BarChart2,
+    title: 'Data-Driven Approach',
+    description: 'We turn raw data into actionable intelligence, helping you make informed decisions, optimize processes, and predict outcomes.',
   },
   {
-    icon: Activity,
-    title: 'System Automation',
-    description: 'Streamline operations and reduce human error with smart automation.',
+    icon: Cable,
+    title: 'Seamless System Integration',
+    description: 'We connect your entire digital ecosystem with robust APIs, middleware, and custom integrations for streamlined operations.',
   },
   {
     icon: Server,
-    title: 'Data & Insights',
-    description: 'Transform raw data into actionable business insights.',
+    title: 'Agile & Transparent Delivery',
+    description: 'From sprint planning to deployment, we ensure fast iterations, continuous feedback, and full project visibility at every stage.',
   },
   {
-    icon: TrendingUp,
-    title: 'Scalable Architecture',
-    description: 'Grow seamlessly with a foundation designed for enterprise scale.',
+    icon: Handshake,
+    title: 'Client-Centric Partnership',
+    description: 'We go beyond just project delivery — we collaborate closely, understand your vision, and stay invested in your long-term success.',
   },
 ];
 
-export default function IntelligentBusinessSection() {
+export default function FeaturesSection() {
   return (
-    <section className="w-full bg-[#050d1b] py-20 px-6 text-white">
-      <div className="max-w-7xl mx-auto text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-bold mb-4"
-        >
-          Powering the Future of Intelligent Business
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-gray-400 mb-12 max-w-3xl mx-auto"
-        >
-          From infrastructure to AI, our comprehensive solutions are built to empower every aspect of your enterprise journey.
-        </motion.p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <motion.div
-                key={index}
-                className="bg-[#0a1224] p-6 rounded-2xl shadow-lg hover:shadow-cyan-500/20 transition-shadow"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="flex items-center justify-center mb-4">
-                  <Icon className="w-10 h-10 text-cyan-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
-              </motion.div>
-            );
-          })}
-        </div>
+    <section id="features" className="py-16 px-6 md:px-10">
+      <h2 className="text-4xl font-bold text-center text-[#00ffc2] mb-10">
+        Why Choose MaverickIgnite Solutions LLP?
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {features.map((feature, index) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              key={index}
+              className="bg-[#1a1a2e]/40 p-6 rounded-xl border border-[#00ffc2]/20 shadow-lg backdrop-blur transition-all duration-300 hover:shadow-[0_0_25px_#00ffc2] hover:scale-105 group"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <Icon size={32} className="text-[#00ffc2] group-hover:scale-110 transition-transform duration-200" />
+                <h3 className="text-lg font-semibold text-white group-hover:font-bold">
+                  {feature.title}
+                </h3>
+              </div>
+              <p className="text-gray-300 text-sm">{feature.description}</p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

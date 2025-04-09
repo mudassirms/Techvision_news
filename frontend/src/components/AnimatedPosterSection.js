@@ -24,7 +24,7 @@ export default function AnimatedPosterSection() {
   return (
     <section
       ref={ref}
-      className="w-full bg-[#050d1b] py-20 px-6 flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-65"
+      className="w-full bg-[#050d1b] py-18 px-5 flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-65"
     >
       {/* 📦 Image Section */}
       <motion.div

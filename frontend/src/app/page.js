@@ -11,7 +11,7 @@ import AnimatedPosterSection from "@/components/AnimatedPosterSection";
 
 import WaveSection from "../components/WaveSection";
 import HUDDivider from "../components/HUDDivider";
-
+// [import NeuralNetworkBackground from "@/components/NeuralNetworkBackground";]
 
 export default function Home() {
   return (
@@ -34,12 +34,12 @@ export default function Home() {
           <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl gap-10">
             
             {/* Text Section */}
-            <div className="text-left max-w-lg w-full">
+            <div className="text-left max-w-l w-full">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-green-300 to-teal-400 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(0,255,200,0.4)] animate-glow">
-                Powering the Future with AI
+              Transforming Business with AI-Driven Software Excellence
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6">
-                Software Development • AI Integration • Data Solutions • System Modernization
+              <p className="text-base italian-subheading sm:text-lg md:text-xl text-gray-300 mb-7">
+              Building next-gen platforms with AI and advanced engineering
               </p>
              <a href="#contact">
   <button className="relative px-8 py-3 rounded-full font-semibold text-black bg-gradient-to-r from-cyan-400 to-cyan-300 overflow-hidden shadow-lg hover:opacity-100 transition-all duration-300 group">
@@ -109,13 +109,15 @@ export default function Home() {
           `}</style>
         </header>
 
+  
+        <WaveSection />
+
         {/* ✅ About Section */}
-        <section id="about" className="px-6 md:px-10 pt-16 pb-4 scroll-mt-24">
+        <section id="about" className="px-7 md:px-10 pt-16 pb-4 scroll-mt-24">
           <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
             <h2 className="text-4xl font-bold text-[#00ffc2] text-center">Who We Are?</h2>
             <p className="mt-4 text-lg text-gray-300 text-center max-w-3xl mx-auto">
-              We are a technology-driven company specializing in software development, AI integration, and scalable data solutions that empower businesses to innovate and grow.
-            </p>
+            𝗠𝗮𝘃𝗲𝗿𝗶𝗰𝗸𝗜𝗴𝗻𝗶𝘁𝗲 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻𝘀 𝗟𝗟𝗣 is a forward-thinking, AI-first technology company dedicated to building intelligent software solutions that empower businesses to thrive in the digital era. We specialize in 𝗔𝗜-𝗽𝗼𝘄𝗲𝗿𝗲𝗱 𝗮𝗽𝗽𝗹𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗱𝗲𝘃𝗲𝗹𝗼𝗽𝗺𝗲𝗻𝘁, 𝗔𝗜 𝗶𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗶𝗼𝗻, 𝗲𝗻𝘁𝗲𝗿𝗽𝗿𝗶𝘀𝗲 𝘀𝗼𝗳𝘁𝘄𝗮𝗿𝗲, 𝗮𝗻𝗱 𝘀𝗺𝗮𝗿𝘁 𝗱𝗮𝘁𝗮 𝗶𝗻𝗳𝗿𝗮𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲 that fuel innovation, accelerate growth, and streamline operations.        </p>
 
             <div className="grid md:grid-cols-2 gap-8 mt-10">
               <motion.div
@@ -126,9 +128,10 @@ export default function Home() {
                 className="bg-[#0b1628] p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
               >
                 <h3 className="text-2xl font-semibold text-[#00ffc2] mb-3">Our Vision</h3>
-                <p className="text-gray-300">
-                  To drive digital transformation by creating intelligent, efficient, and scalable technology solutions that solve real-world business challenges.
-                </p>
+                <ul className="mt-4 text-gray-100 list-inside space-y-2">
+                
+                <li><span className="text-white font-semibold">To become a global leader in intelligent software innovation — enabling companies of all sizes to embrace the power of AI, enterprise software engineering, and data-driven decision making through seamless integration, automation, and digital transformation</span></li>
+                </ul>
               </motion.div>
 
               <motion.div
@@ -138,23 +141,64 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="bg-[#0b1628] p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
               >
-                <h3 className="text-2xl font-semibold text-[#00ffc2] mb-3">Our Mission</h3>
-                <p className="text-gray-300">
-                  To empower businesses with cutting-edge software, AI-driven automation, and robust data strategies that lead to long-term success.
-                </p>
+                <h3 className="text-2xl font-semibold text-[#00ffc2] mb-4">Our Mission</h3>
+                <ul className="mt-4 text-gray-100 list-disc list-inside space-y-2">
+                <li><span className="text-white font-semibold">To empower businesses through AI-driven software development, enterprise-grade solutions, and modern data engineering.</span></li>
+                <li><span className="text-white font-semibold">We aim to simplify complexity, automate with purpose, and deliver high-impact digital solutions that fuel innovation, scalability, and long-term growth.</span></li>
+                
+                </ul>
               </motion.div>
             </div>
-
-            <div className="mt-10">
-              <h3 className="text-2xl font-bold text-[#00ffc2]">How We Help Businesses</h3>
-              <ul className="mt-4 text-gray-100 list-disc list-inside space-y-2">
-                <li><span className="text-white font-semibold">Need a software solution?</span> We develop web-based enterprise applications.</li>
-                <li><span className="text-white font-semibold">Want to integrate AI?</span> We embed ML models and automation into apps.</li>
-                <li><span className="text-white font-semibold">Automate workflows?</span> We simplify operations with smart tools.</li>
-                <li><span className="text-white font-semibold">Data overload?</span> We manage big data and cloud architecture efficiently.</li>
-              </ul>
-            </div>
+            <div className="text-center italian-subheading text-xl md:text-2xl text-white my-8 px-2">
+            At MaverickIgnite, we don’t just build software — we engineer possibilities. Our team is driven by curiosity, collaboration, and a deep belief in the transformative power of technology</div>
+            
           </div>
+          <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
+            <h3 className="text-2xl font-bold text-[#00ffc2]">How We Help Businesses</h3>
+              <ul className="mt-4 text-gray-100  list-inside space-y-2">
+              <div className="text-left italian-subheading text-xl md:text-2xl text-white my-8 px-1">
+              At 𝗠𝗮𝘃𝗲𝗿𝗶𝗰𝗸𝗜𝗴𝗻𝗶𝘁𝗲, AI is at the core of everything we build. We empower businesses to innovate, automate, and scale through intelligent software solutions tailored to real-world challenges.</div>
+              <li>
+  <p className="text-white font-semibold">Need intelligent software?</p>
+  <p className="text-gray-300 mt-1 ml-4">We build AI-powered, web-based enterprise applications that are secure, scalable, and smart.</p>
+</li>
+                <li>
+  <p className="text-white font-semibold">Want to integrate AI?</p>
+  <p className="text-gray-300 mt-1 ml-4">We embed machine learning models and intelligent automation into your workflows to drive smarter decisions.</p>
+</li>
+<li>
+  <p className="text-white font-semibold">Looking to automate processes?</p>
+  <p className="text-gray-300 mt-1 ml-4">We streamline operations with smart tools that reduce manual effort and improve efficiency.</p>
+</li>
+<li>
+  <p className="text-white font-semibold">Struggling with data overload?</p>
+  <p className="text-gray-300 mt-1 ml-4">We architect big data pipelines and cloud-native systems that turn complex data into actionable insights.</p>
+</li>              </ul>
+<div className="mt-20 text-center">
+  <p className="text-gray-100 text-lg">
+    Ready to make your business <span className="text-cyan-400">AI-ready</span>?<br />
+    Let’s build the future together.
+  </p>
+  <div className="mt-4 flex justify-center gap-4">
+    <a
+      href="#contact"
+      className="flex items-center gap-2 px-5 py-2.5 text-sm text-black bg-cyan-400 hover:bg-cyan-300 font-medium rounded-xl shadow-lg shadow-cyan-500/40 transition duration-300"
+      >
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M2.94 6.94a1.5 1.5 0 012.12 0l3.13 3.13 6.6-6.6a1.5 1.5 0 112.12 2.12l-7.66 7.66a1.5 1.5 0 01-2.12 0L2.94 9.06a1.5 1.5 0 010-2.12z" />
+      </svg>
+      Contact Us
+    </a>
+    <a
+      href="#services"
+      className="px-4 py-2 border border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-900 transition"
+    >
+      Explore Our Services
+    </a>
+  </div>
+</div>
+
+            </div>
         </section>
 
         <WaveSection />
@@ -210,9 +254,16 @@ export default function Home() {
                 "We adapt to your needs with custom engagement models—project-based, dedicated teams, or long-term support."
               ];
               return (
-                <div key={idx} className="bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
-                  <p className="text-gray-200">{descriptions[idx]}</p>
-                </div>
+                <div
+  key={idx}
+  className="bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20 
+             hover:shadow-[0_0_15px_#00ffc2] transition-all duration-300 group"
+>
+  <p className="text-gray-200 group-hover:font-semibold transition-all duration-300">
+    {descriptions[idx]}
+  </p>
+</div>
+
               );
             })}
           </div>
