@@ -44,7 +44,7 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="py-16 px-6 md:px-10">
       <h2 className="text-4xl font-bold text-center text-[#00ffc2] mb-10">
-        Why Choose MaverickIgnite Solutions LLP?
+        Why Choose Us?
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {features.map((feature, index) => {
