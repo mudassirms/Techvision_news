@@ -6,21 +6,21 @@ import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050d1b] text-white py-6 px-4 border-t border-[#1f2a3a] text-sm">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Logo & About - shifted slightly left */}
-        <div className="ml-[-60px]">
-          <Link href="/" className="flex items-center space-x-2">
+    <footer className="bg-[#050d1b] text-white py-8 px-6 border-t border-[#1f2a3a] text-sm">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* Logo & About */}
+        <div>
+          <Link href="/" className="flex items-center space-x-3 mb-3">
             <img
               src="/Newlogo4.png"
               alt="Maverick Ignite Logo"
-              className="h-12 sm:h-16 w-auto object-contain block"
+              className="h-10 sm:h-14 w-auto object-contain"
             />
             <div className="leading-tight">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
                 MAVERICK IGNITE
               </h1>
-              <p className="text-xm font-bold text-gray-300 -mt-1 ml-[1px] tracking-wide">
+              <p className="text-sm font-bold text-gray-300 -mt-1 tracking-wide">
                 SOLUTIONS LLP
               </p>
             </div>
@@ -30,28 +30,13 @@ export default function Footer() {
             data management, and system integration solutions.
           </p>
           <div className="flex space-x-4 mt-4 text-xl">
-            <a
-              href="https://www.linkedin.com/company/maverick-ignite-solutions-llp/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition-colors duration-300"
-            >
+            <a href="https://www.linkedin.com/company/maverick-ignite-solutions-llp/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400">
               <FaLinkedin />
             </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition-colors duration-300"
-            >
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400">
               <FaTwitter />
             </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition-colors duration-300"
-            >
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400">
               <FaGithub />
             </a>
           </div>
@@ -104,17 +89,15 @@ export default function Footer() {
       </div>
 
       {/* Bottom Strip */}
-      <div className="border-t border-[#1f2a3a] mt-6 pt-4 text-center text-gray-400 text-xm px-5">
-        <p className="mb-4">
+      <div className="border-t border-[#1f2a3a] mt-8 pt-4 text-center text-gray-400 px-4 text-xs sm:text-sm">
+        <p className="mb-3">
           © 2025 <span className="text-white font-semibold">MaverickIgnite Solutions LLP</span>. All rights reserved.
         </p>
-        <div className="mt-3 pt-2 px-4 text-xm text-gray-400 relative flex justify-center">
-          <div className="flex gap-3">
-            <Link href="/privacy-policy" className="hover:text-cyan-300">Privacy Policy</Link>
-            <span>|</span>
-            <Link href="/terms-of-service" className="hover:text-cyan-300">Terms of Service</Link>
-          </div>
-          <span className="absolute right-4 text-gray-500 whitespace-nowrap hidden sm:inline">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
+          <Link href="/privacy-policy" className="hover:text-cyan-300">Privacy Policy</Link>
+          <span className="hidden sm:inline">|</span>
+          <Link href="/terms-of-service" className="hover:text-cyan-300">Terms of Service</Link>
+          <span className="text-gray-500 sm:ml-auto sm:pr-4 mt-2 sm:mt-0">
             Crafted by <span className="text-cyan-300 font-medium">Mudassir Sanderwale</span>
           </span>
         </div>

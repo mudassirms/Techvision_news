@@ -12,16 +12,16 @@ const Hero = () => {
   return (
     <header
       id="home"
-      className="relative w-full min-h-screen flex items-center justify-center bg-[#050d1b] px-4 sm:px-6 lg:px-12 pt-12 pb-10 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center bg-[#050d1b] px-4 sm:px-6 lg:px-12 pt-24 pb-10 overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute inset-0 z-0 bg-gradient-to-tr from-[#00fff7]/10 via-[#00ffc2]/5 to-transparent pointer-events-none" />
 
       {/* Main content container */}
-      <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl gap-10">
+      <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between w-full max-w-7xl gap-10 lg:gap-20">
         {/* Text Section */}
         <motion.div
-          className="text-left max-w-l w-full"
+          className="text-left w-full max-w-xl"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -29,7 +29,7 @@ const Hero = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-green-300 to-teal-400 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(0,255,200,0.4)] animate-glow">
             Transforming Business with AI-Driven Software Excellence
           </h1>
-          <p className="text-base italian-subheading sm:text-lg md:text-xl text-gray-300 mb-7">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-7">
             Building next-gen platforms with AI and advanced engineering
           </p>
           <a href="#contact">
@@ -42,16 +42,17 @@ const Hero = () => {
 
         {/* Floating AI Image */}
         <motion.div
-          className="relative w-full max-w-xs sm:max-w-sm md:max-w-md flex justify-center"
+          className="relative w-full flex justify-center max-w-sm sm:max-w-md md:max-w-lg lg:max-w-[500px]"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <div className="absolute w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] bg-[#00fff7] blur-[80px] opacity-20 right-0 top-1/2 transform -translate-y-1/2 z-0 rounded-full" />
+          {/* Soft Glow Background */}
+          <div className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] bg-[#00fff7] blur-[100px] opacity-20 right-0 top-1/2 transform -translate-y-1/2 z-0 rounded-full" />
           <Image
             src={heroImage}
             alt="Floating AI Visual"
-            className="relative w-full animate-float z-10"
+            className="relative w-full h-auto animate-float z-10 object-contain"
             priority
           />
         </motion.div>

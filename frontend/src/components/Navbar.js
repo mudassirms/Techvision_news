@@ -119,25 +119,24 @@ export default function Navbar() {
       } border-b border-[#1f2a3a]`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 ml-[-60px]">
+        {/* ✅ Responsive Logo with Text */}
+        <Link href="/" className="flex items-center gap-2">
+          <img
+            src="/Newlogo4.png"
+            alt="Maverick Ignite Logo"
+            className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
+          />
+          <div className="leading-tight">
+            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent whitespace-nowrap">
+              MAVERICK IGNITE
+            </h1>
+            <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-300 tracking-wide whitespace-nowrap">
+              SOLUTIONS LLP
+            </p>
+          </div>
+        </Link>
 
-  <img
-    src="/Newlogo4.png"
-    alt="Maverick Ignite Logo"
-    className="h-12 sm:h-16 w-auto object-contain block"
-  />
-  <div className="leading-tight">
-    <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
-      MAVERICK IGNITE
-    </h1>
-    <p className="text-xm font-bold text-gray-300 -mt-1 ml-[1px] tracking-wide">
-      SOLUTIONS LLP
-    </p>
-  </div>
-</Link>
-
-        {/* Desktop Nav */}
+        {/* ✅ Desktop Navigation */}
         <nav
           className="hidden md:flex items-center space-x-4 xl:space-x-6 text-sm font-medium text-white"
           ref={dropdownRef}
@@ -188,7 +187,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile Toggle */}
+        {/* ✅ Mobile Menu Toggle */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden text-white"
@@ -197,7 +196,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* ✅ Mobile Dropdown Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-[#050d1b]/95 backdrop-blur-md text-white px-5 py-4 space-y-4 transition-all duration-300">
           {navItems.map((item) => (
