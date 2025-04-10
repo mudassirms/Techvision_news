@@ -25,7 +25,6 @@ export default function Navbar() {
         "about",
         "services",
         "products",
-        "why-us",
         "contact",
       ];
 
@@ -61,7 +60,6 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Products", href: "#products" },
-    { name: "Why Us", href: "#why-us" },
     { name: "Contact", href: "#contact" },
     { name: "Careers", href: "/careers" },
   ];

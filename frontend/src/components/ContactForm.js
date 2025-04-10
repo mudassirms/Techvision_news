@@ -56,7 +56,7 @@ export default function ContactForm() {
 
     emailjs
       .send(
-        "service_ahyiltc", // replace with your service ID
+        "service_c8vvm1e", // replace with your service ID
         "template_1hxwllk", // replace with your template ID
         {
           name,
