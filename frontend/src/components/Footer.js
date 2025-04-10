@@ -6,8 +6,8 @@ import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050d1b] text-white py-8 px-6 border-t border-[#1f2a3a] text-sm">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 lg:gap-20">
+<footer className="bg-[#050d1b] text-white py-3 px-4 border-t border-[#1f2a3a] text-sm">
+<div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-6 lg:gap-14">
         {/* Logo & About */}
         <div className="lg:w-1/3">
           <Link href="/" className="flex items-center space-x-3 mb-3">
@@ -91,18 +91,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#data" className="hover:text-cyan-300">
-                  Enterprise Software Development
-                </a>
-              </li>
-              <li>
                 <a href="#database" className="hover:text-cyan-300">
                   Database Management & Smart Optimization
-                </a>
-              </li>
-              <li>
-                <a href="#data-eng" className="hover:text-cyan-300">
-                  Data Engineering & Analytics
                 </a>
               </li>
               <li>
@@ -110,11 +100,7 @@ export default function Footer() {
                   System Integration & API Engineering
                 </a>
               </li>
-              <li>
-                <a href="#product-development" className="hover:text-cyan-300">
-                  Full-Cycle Product Development
-                </a>
-              </li>
+              
             </ul>
           </div>
 
@@ -153,8 +139,8 @@ export default function Footer() {
       </div>
 
       {/* Bottom Strip */}
-      <div className="border-t border-[#1f2a3a] mt-8 pt-4 text-center text-gray-400 px-4 text-xs sm:text-sm">
-        <p className="mb-3">
+      <div className="border-t border-[#1f2a3a] mt-4 pt-3 text-center text-gray-400 px-4 text-xs sm:text-sm">
+        <p className="mb-2">
           © 2025{" "}
           <span className="text-white font-semibold">
             MAVERICK IGNITE SOLUTIONS LLP
@@ -162,7 +148,7 @@ export default function Footer() {
           . All rights reserved.
         </p>
 
-        <div className="flex justify-center items-center gap-3 mb-2">
+        <div className="flex justify-center items-center gap-3 mb-1">
           <Link href="/privacy-policy" className="hover:text-cyan-300">
             Privacy Policy
           </Link>
