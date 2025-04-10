@@ -120,21 +120,21 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* ✅ Responsive Logo with Text */}
-        <Link href="/" className="flex items-center gap-2">
-          <img
-            src="/Newlogo4.png"
-            alt="Maverick Ignite Logo"
-            className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
-          />
-          <div className="leading-tight">
-            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent whitespace-nowrap">
-              MAVERICK IGNITE
-            </h1>
-            <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-300 tracking-wide whitespace-nowrap">
-              SOLUTIONS LLP
-            </p>
-          </div>
-        </Link>
+        <Link href="/" className="flex items-center space-x-3 mb-3">
+            <img
+              src="/Newlogo4.png"
+              alt="Maverick Ignite Logo"
+              className="h-10 sm:h-14 w-auto object-contain"
+            />
+            <div className="leading-tight">
+              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+                MAVERICK IGNITE
+              </h1>
+              <p className="text-sm font-bold text-gray-300 -mt-1 tracking-wide">
+                SOLUTIONS LLP
+              </p>
+            </div>
+          </Link>
 
         {/* ✅ Desktop Navigation */}
         <nav
