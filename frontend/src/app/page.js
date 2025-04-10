@@ -1,11 +1,9 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
 import Hero from '../components/Hero'
 import Services from '../components/Service';
 import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer';
 import Product from '../components/Product';
 import IntelligentBusinessSection from "@/components/IntelligentBusinessSection";
 import AnimatedPosterSection from "@/components/AnimatedPosterSection";
@@ -18,7 +16,6 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#050d1b] text-white scroll-smooth overflow-auto font-sans">
       {/* ✅ Navbar */}
-      <Navbar />
       {/* ✅ Main Content */}
       <main className="flex-grow">
   <Hero />
@@ -171,9 +168,6 @@ export default function Home() {
           <ContactForm />
         </section>
       </main>
-
-      {/* ✅ Footer */}
-      <Footer />
     </div>
   );
 }

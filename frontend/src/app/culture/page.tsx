@@ -13,7 +13,7 @@ export default function CulturePage() {
 
         {/* Intro Text */}
         <p className="text-gray-300 text-lg leading-relaxed mb-12">
-          At <span className="text-accent font-semibold">Maverick Ignite</span>, our culture is built on innovation, collaboration, and a passion for pushing boundaries. 
+          At <span className="text-accent font-semibold">MaverickIgnite</span>, our culture is built on innovation, collaboration, and a passion for pushing boundaries. 
           We believe in creating an environment where everyone is empowered to think boldly, act fearlessly, and grow endlessly.
         </p>
 
@@ -45,13 +45,6 @@ export default function CulturePage() {
           </div>
         </div>
       </div>
-
-      {/* Floating Home Button */}
-      <Link href="/">
-        <span className="fixed bottom-6 right-6 bg-primary text-black px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-transform font-semibold">
-          ⬅ Home
-        </span>
-      </Link>
     </div>
   );
 }

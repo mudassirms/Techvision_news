@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
@@ -11,6 +12,9 @@ export default function Navbar() {
   const [openMobileDropdowns, setOpenMobileDropdowns] = useState({});
   const [activeSection, setActiveSection] = useState("");
   const dropdownRef = useRef(null);
+
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,24 +88,19 @@ export default function Navbar() {
 
   const isDropdown = (name) => Object.keys(dropdownItems).includes(name);
 
-  const handleProductClick = (id) => {
-    setOpenDropdown(null);
-    setIsMenuOpen(false);
-    setTimeout(() => {
-      const section = document.getElementById("products");
-      section?.scrollIntoView({ behavior: "smooth" });
-      const openEvent = new CustomEvent("openProductModal", { detail: id });
-      window.dispatchEvent(openEvent);
-    }, 300);
+  const scrollToSection = (hash) => {
+    if (pathname === "/") {
+      const el = document.getElementById(hash.replace("#", ""));
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push(`/${hash}`);
+    }
   };
 
-  const handleServiceClick = () => {
-    setOpenDropdown(null);
+  const handleNavClick = (href) => {
     setIsMenuOpen(false);
-    setTimeout(() => {
-      const section = document.getElementById("services");
-      section?.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+    setOpenDropdown(null);
+    scrollToSection(href);
   };
 
   const toggleMobileDropdown = (itemName) => {
@@ -121,16 +120,22 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
-          <img
-            src="/Newlogo.png"
-            alt="Maverick Ignite Logo"
-            className="h-12 sm:h-16 w-auto object-contain block"
-          />
-          <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
-            MaverickIgnite
-          </span>
-        </Link>
+        <Link href="/" className="flex items-center space-x-2 ml-[-60px]">
+
+  <img
+    src="/Newlogo4.png"
+    alt="Maverick Ignite Logo"
+    className="h-12 sm:h-16 w-auto object-contain block"
+  />
+  <div className="leading-tight">
+    <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+      MAVERICK IGNITE
+    </h1>
+    <p className="text-xm font-bold text-gray-300 -mt-1 ml-[1px] tracking-wide">
+      SOLUTIONS LLP
+    </p>
+  </div>
+</Link>
 
         {/* Desktop Nav */}
         <nav
@@ -152,49 +157,31 @@ export default function Navbar() {
                   <ChevronDown size={16} />
                 </button>
               ) : (
-                <a
-                  href={item.href}
+                <button
+                  onClick={() => handleNavClick(item.href)}
                   className={`nav-link tracking-wide cursor-pointer ${
                     activeSection === item.href ? "text-cyan-400" : ""
                   }`}
                 >
                   {item.name}
-                </a>
+                </button>
               )}
 
               {openDropdown === item.name && (
                 <div className="absolute top-full left-0 mt-2 bg-[#0a1224] shadow-lg rounded-md py-2 w-52 z-50">
-                  {dropdownItems[item.name].map((subItem) =>
-                    item.name === "Products" ? (
-                      <button
-                        key={subItem.name}
-                        onClick={() => handleProductClick(subItem.id)}
-                        className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-cyan-700/30 transition"
-                      >
-                        {subItem.name}
-                      </button>
-                    ) : item.name === "Services" ? (
-                      <button
-                        key={subItem.name}
-                        onClick={handleServiceClick}
-                        className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-cyan-700/30 transition"
-                      >
-                        {subItem.name}
-                      </button>
-                    ) : (
-                      <a
-                        key={subItem.name}
-                        href={subItem.href}
-                        onClick={() => {
-                          setIsMenuOpen(false);
-                          setOpenDropdown(null);
-                        }}
-                        className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-cyan-700/30 transition"
-                      >
-                        {subItem.name}
-                      </a>
-                    )
-                  )}
+                  {dropdownItems[item.name].map((subItem) => (
+                    <button
+                      key={subItem.name}
+                      onClick={() =>
+                        item.name === "Careers"
+                          ? router.push(subItem.href)
+                          : handleNavClick(subItem.href)
+                      }
+                      className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-cyan-700/30 transition"
+                    >
+                      {subItem.name}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
@@ -210,7 +197,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Dropdown Nav */}
+      {/* Mobile Nav */}
       {isMenuOpen && (
         <div className="md:hidden bg-[#050d1b]/95 backdrop-blur-md text-white px-5 py-4 space-y-4 transition-all duration-300">
           {navItems.map((item) => (
@@ -229,47 +216,31 @@ export default function Navbar() {
                   />
                 </button>
               ) : (
-                <a
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => handleNavClick(item.href)}
                   className={`block nav-link text-sm tracking-wide ${
                     activeSection === item.href ? "text-cyan-400" : ""
                   }`}
                 >
                   {item.name}
-                </a>
+                </button>
               )}
 
               {isDropdown(item.name) && openMobileDropdowns[item.name] && (
                 <div className="ml-4 mt-1 space-y-2">
-                  {dropdownItems[item.name].map((subItem) =>
-                    item.name === "Products" ? (
-                      <button
-                        key={subItem.name}
-                        onClick={() => handleProductClick(subItem.id)}
-                        className="block text-left text-sm text-gray-300 hover:text-white"
-                      >
-                        {subItem.name}
-                      </button>
-                    ) : item.name === "Services" ? (
-                      <button
-                        key={subItem.name}
-                        onClick={handleServiceClick}
-                        className="block text-left text-sm text-gray-300 hover:text-white"
-                      >
-                        {subItem.name}
-                      </button>
-                    ) : (
-                      <a
-                        key={subItem.name}
-                        href={subItem.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block text-sm text-gray-300 hover:text-white"
-                      >
-                        {subItem.name}
-                      </a>
-                    )
-                  )}
+                  {dropdownItems[item.name].map((subItem) => (
+                    <button
+                      key={subItem.name}
+                      onClick={() =>
+                        item.name === "Careers"
+                          ? router.push(subItem.href)
+                          : handleNavClick(subItem.href)
+                      }
+                      className="block text-left text-sm text-gray-300 hover:text-white"
+                    >
+                      {subItem.name}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>

@@ -6,23 +6,28 @@ import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050d1b] text-white py-10 px-4 border-t border-[#1f2a3a] text-sm">
+    <footer className="bg-[#050d1b] text-white py-2 px-4 border-t border-[#1f2a3a] text-sm">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Logo & About */}
-        <div>
-          <Link href="/" className="flex items-center  space-x">
+        {/* Logo & About - shifted slightly left */}
+        <div className="ml-[-60px]">
+          <Link href="/" className="flex items-center space-x-2">
             <img
-              src="/Newlogo.png"
+              src="/Newlogo4.png"
               alt="Maverick Ignite Logo"
-              className="h-15 sm:h-16 w-auto object-contain block"
+              className="h-12 sm:h-16 w-auto object-contain block"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
-              MaverickIgnite
-            </span>
+            <div className="leading-tight">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+                MAVERICK IGNITE
+              </h1>
+              <p className="text-xm font-bold text-gray-300 -mt-1 ml-[1px] tracking-wide">
+                SOLUTIONS LLP
+              </p>
+            </div>
           </Link>
-          <p className="text-gray-400 text-sm leading-relaxed">
-          MaverickIgnite Solutions LLP specializes in AI software development, data
-            management, and system integration solutions.
+          <p className="text-gray-400 text-sm leading-relaxed mt-2">
+            MaverickIgnite Solutions LLP specializes in AI software development,
+            data management, and system integration solutions.
           </p>
           <div className="flex space-x-4 mt-4 text-xl">
             <a
@@ -57,7 +62,6 @@ export default function Footer() {
           <h4 className="font-semibold mb-3">Company</h4>
           <ul className="space-y-2 text-gray-300 text-sm">
             <li><a href="#about" className="hover:text-cyan-300">About Us</a></li>
-            {/* <li><a href="#team" className="hover:text-cyan-300">Our Team</a></li> */}
             <li><Link href="/careers" className="hover:text-cyan-300">Careers</Link></li>
             <li><a href="#contact" className="hover:text-cyan-300">Contact Us</a></li>
           </ul>
@@ -86,7 +90,7 @@ export default function Footer() {
             Phone: <a href="tel:+919036666910" className="hover:text-cyan-300">+91 9036666910</a>
           </p>
           <p className="text-gray-300 text-sm mt-2">
-            Address: {" "}
+            Address:{" "}
             <a
               href="https://www.google.com/maps/place/3rd+Floor,+Vaishnavi+Signature,+Panathur+Main+Rd,+Bengaluru,+Karnataka+560103"
               target="_blank"
@@ -100,19 +104,20 @@ export default function Footer() {
       </div>
 
       {/* Bottom Strip */}
-      <div className="border-t border-[#1f2a3a] mt-12 pt-9 text-center text-gray-400 text-xl px-5">
-        <p className="mb-2">
+      <div className="border-t border-[#1f2a3a] mt-6 pt-4 text-center text-gray-400 text-xm px-5">
+        <p className="mb-4">
           © 2025 <span className="text-white font-semibold">MaverickIgnite Solutions LLP</span>. All rights reserved.
         </p>
-        <div className="flex justify-center gap-3 flex-wrap text-xm sm:text-sm">
-          <Link href="/privacy-policy" className="hover:text-cyan-300">Privacy Policy</Link>
-          <span>|</span>
-          <Link href="/terms-of-service" className="hover:text-cyan-300">Terms of Service</Link>
+        <div className="mt-3 pt-2 px-4 text-xm text-gray-400 relative flex justify-center">
+          <div className="flex gap-3">
+            <Link href="/privacy-policy" className="hover:text-cyan-300">Privacy Policy</Link>
+            <span>|</span>
+            <Link href="/terms-of-service" className="hover:text-cyan-300">Terms of Service</Link>
+          </div>
+          <span className="absolute right-4 text-gray-500 whitespace-nowrap hidden sm:inline">
+            Crafted by <span className="text-cyan-300 font-medium">Mudassir Sanderwale</span>
+          </span>
         </div>
-      </div>
-      {/* Crafted by Mudassir */}
-      <div className="text-right mt-8 text-xm text-gray-500">
-        Website crafted by <span className="text-cyan-300 font-medium">Mudassir Sanderwale</span>
       </div>
     </footer>
   );

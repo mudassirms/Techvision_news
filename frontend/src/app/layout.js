@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css"; 
+import "./globals.css";
 import { ThemeProvider } from "next-themes";
-
+import Navbar from "../components/Navbar"; // ✅ Import Navbar here
+import Footer from "../components/Footer"; // Optional: Footer globally too
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +34,10 @@ export default function RootLayout({ children }) {
           enableSystem={true}
           disableTransitionOnChange={false}
         >
-
-          {/* <CustomCursor /> */} {/* ✨ Your custom animated cursor */}
           <div className="w-full h-full bg-white dark:bg-[#050d1b] transition-colors duration-300">
+            <Navbar /> {/* ✅ Global Navbar */}
             <main className="w-full h-full">{children}</main>
+            <Footer /> {/* Optional: add global Footer too */}
           </div>
         </ThemeProvider>
       </body>

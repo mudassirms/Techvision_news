@@ -1,6 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import Link from 'next/link';
 import JobApplicationForm from '../../components/JobApplicationForm';
 
 const jobs = [
@@ -26,15 +25,8 @@ export default function CareersPage() {
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-primary">Join Our Team</h1>
 
-        {/* Back to Home button (top) */}
-        <Link href="/">
-          <span className="inline-block text-sm bg-primary text-black font-semibold px-4 py-2 rounded-lg hover:brightness-110 transition mb-6">
-            ⬅ Back to Home
-          </span>
-        </Link>
-
         <p className="text-gray-300 mb-12">
-          Be part of our innovative and growing family at <span className="text-accent">Maverick Ignite</span>. We believe in creating opportunities and growing together.
+          Be part of our innovative and growing family at <span className="text-accent">MaverickIgnite</span>. We believe in creating opportunities and growing together.
         </p>
 
         <div className="grid gap-8">
@@ -61,13 +53,6 @@ export default function CareersPage() {
           </div>
         )}
       </div>
-
-      {/* Floating return button (bottom right) */}
-      <Link href="/">
-        <span className="fixed bottom-6 right-6 bg-primary text-black px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-transform font-semibold">
-          ⬅ Home
-        </span>
-      </Link>
     </div>
   );
 }
