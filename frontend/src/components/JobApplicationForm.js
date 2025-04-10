@@ -46,68 +46,82 @@ export default function JobApplicationForm({ jobTitle, onClose }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6 bg-white/5 p-6 rounded-lg border border-white/10 space-y-4">
-      <h3 className="text-lg font-semibold text-white">Apply for {jobTitle}</h3>
-
-      <input
-        type="text"
-        name="name"
-        placeholder="Your Name"
-        required
-        className="w-full p-2 rounded bg-white/10 text-white"
-        onChange={handleChange}
-      />
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        required
-        className="w-full p-2 rounded bg-white/10 text-white"
-        onChange={handleChange}
-      />
-
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Phone"
-        required
-        className="w-full p-2 rounded bg-white/10 text-white"
-        onChange={handleChange}
-      />
-
-      <textarea
-        name="message"
-        placeholder="Cover Letter or Message"
-        rows="4"
-        className="w-full p-2 rounded bg-white/10 text-white"
-        onChange={handleChange}
-      />
-
-      <input
-        type="file"
-        name="resume"
-        required
-        accept=".pdf,.doc,.docx"
-        className="text-white"
-        onChange={handleChange}
-      />
-
-      <div className="flex gap-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
+      <div className="bg-[#0d1629] text-white w-full max-w-xl p-6 rounded-lg shadow-lg relative">
+        {/* Close Button */}
         <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-        >
-          Submit Application
-        </button>
-        <button
-          type="button"
           onClick={onClose}
-          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+          className="absolute top-3 right-4 text-gray-300 hover:text-red-400 text-2xl"
         >
-          Cancel
+          ×
         </button>
+
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <h3 className="text-xl font-semibold text-cyan-300 mb-4">
+            Apply for {jobTitle}
+          </h3>
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            className="w-full p-3 rounded bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            onChange={handleChange}
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            className="w-full p-3 rounded bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            onChange={handleChange}
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            required
+            className="w-full p-3 rounded bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            onChange={handleChange}
+          />
+
+          <textarea
+            name="message"
+            placeholder="Cover Letter or Message"
+            rows="4"
+            className="w-full p-3 rounded bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            onChange={handleChange}
+          />
+
+          <input
+            type="file"
+            name="resume"
+            required
+            accept=".pdf,.doc,.docx"
+            className="text-white"
+            onChange={handleChange}
+          />
+
+          <div className="flex justify-end gap-4 pt-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded text-white"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-cyan-600 hover:bg-cyan-700 px-5 py-2 rounded text-white"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 }
