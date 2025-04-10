@@ -61,30 +61,36 @@ export default function Home() {
                 </ul>
               </motion.div>
             </div>
-            <div className="mt-4 text-center text-white font-semibold">At MaverickIgnite, we don’t just build software — we engineer possibilities. Our team is driven by curiosity, collaboration, and a deep belief in the transformative power of technology</div>
-            
-          </div>
-          <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
-            <h3 className="text-2xl font-bold text-[#00ffc2]">How We Help Businesses</h3>
-              <ul className="mt-4 text-gray-100  list-inside space-y-2">
-              <div className="text-left italian-subheading text-xl md:text-2xl text-white my-8 px-1">
-              At 𝗠𝗮𝘃𝗲𝗿𝗶𝗰𝗸𝗜𝗴𝗻𝗶𝘁𝗲, AI is at the core of everything we build. We empower businesses to innovate, automate, and scale through intelligent software solutions tailored to real-world challenges.</div>
-              <li>
-  <p className="text-white font-semibold">Need intelligent software?</p>
-  <p className="text-gray-300 mt-1 ml-4">We build AI-powered, web-based enterprise applications that are secure, scalable, and smart.</p>
-</li>
-                <li>
-  <p className="text-white font-semibold">Want to integrate AI?</p>
-  <p className="text-gray-300 mt-1 ml-4">We embed machine learning models and intelligent automation into your workflows to drive smarter decisions.</p>
-</li>
-<li>
-  <p className="text-white font-semibold">Looking to automate processes?</p>
-  <p className="text-gray-300 mt-1 ml-4">We streamline operations with smart tools that reduce manual effort and improve efficiency.</p>
-</li>
-<li>
-  <p className="text-white font-semibold">Struggling with data overload?</p>
-  <p className="text-gray-300 mt-1 ml-4">We architect big data pipelines and cloud-native systems that turn complex data into actionable insights.</p>
-</li>              </ul>
+            <div className="w-full bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20">
+  <h3 className="text-2xl font-bold text-[#00ffc2]">How We Help Businesses</h3>
+
+  <div className="text-left italian-subheading text-xl md:text-2xl text-white my-8 px-1">
+    At <strong>𝗠𝗮𝘃𝗲𝗿𝗶𝗰𝗸𝗜𝗴𝗻𝗶𝘁𝗲</strong>, AI is at the core of everything we build. We empower businesses to innovate, automate, and scale through intelligent software solutions tailored to real-world challenges.
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div className="bg-[#111827]/70 border border-[#00ffc2]/30 rounded-xl p-5 shadow-md hover:shadow-[#00ffc2]/30 transition">
+      <p className="text-white font-semibold text-lg">Need intelligent software?</p>
+      <p className="text-gray-300 mt-2">We build AI-powered, web-based enterprise applications that are secure, scalable, and smart.</p>
+    </div>
+
+    <div className="bg-[#111827]/70 border border-[#00ffc2]/30 rounded-xl p-5 shadow-md hover:shadow-[#00ffc2]/30 transition">
+      <p className="text-white font-semibold text-lg">Want to integrate AI?</p>
+      <p className="text-gray-300 mt-2">We embed machine learning models and intelligent automation into your workflows to drive smarter decisions.</p>
+    </div>
+
+    <div className="bg-[#111827]/70 border border-[#00ffc2]/30 rounded-xl p-5 shadow-md hover:shadow-[#00ffc2]/30 transition">
+      <p className="text-white font-semibold text-lg">Looking to automate processes?</p>
+      <p className="text-gray-300 mt-2">We streamline operations with smart tools that reduce manual effort and improve efficiency.</p>
+    </div>
+
+    <div className="bg-[#111827]/70 border border-[#00ffc2]/30 rounded-xl p-5 shadow-md hover:shadow-[#00ffc2]/30 transition">
+      <p className="text-white font-semibold text-lg">Struggling with data overload?</p>
+      <p className="text-gray-300 mt-2">We architect big data pipelines and cloud-native systems that turn complex data into actionable insights.</p>
+    </div>
+  </div>
+</div>
+
 <div className="mt-20 text-center">
   <p className="text-gray-100 text-lg">
     Ready to make your business <span className="text-cyan-400">AI-ready</span>?<br />
@@ -148,39 +154,10 @@ export default function Home() {
 
         {/* ✅ Product Section */}
         <Product />
-        <WaveSection />
+        <HUDDivider />
         <IntelligentBusinessSection />
-
-        <HUDDivider /> {/* Futuristic HUD divider */}
-
-        {/* ✅ Why Choose Us */}
-        <section id="why-us" className="px-6 md:px-10 py-16 scroll-mt-24">
-          <h2 className="text-4xl font-bold text-center text-[#00ffc2]">Why Choose Us?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-            {[...Array(6).keys()].map((_, idx) => {
-              const descriptions = [
-                "A team of professionals with 10+ years of experience in Java, Spring Boot, Angular, React, and more.",
-                "We follow best practices in authentication, encryption, and secure coding to protect applications from threats.",
-                "We help businesses scale applications efficiently through microservices architecture and optimized database performance.",
-                "Our industry experts provide hands-on training for fresh talent, focusing on technology-specific and product-specific learning.",
-                "We handle everything from software development and integration to scaling and support, with 100% transparency.",
-                "We adapt to your needs with custom engagement models—project-based, dedicated teams, or long-term support."
-              ];
-              return (
-                <div
-  key={idx}
-  className="bg-[#1a1a2e]/40 p-6 rounded-lg shadow-md backdrop-blur border border-[#00ffc2]/20 
-             hover:shadow-[0_0_15px_#00ffc2] transition-all duration-300 group"
->
-  <p className="text-gray-200 group-hover:font-semibold transition-all duration-300">
-    {descriptions[idx]}
-  </p>
-</div>
-
-              );
-            })}
-          </div>
-        </section>
+        <WaveSection />
+        {/* Futuristic HUD divider */}
 
         {/* ✅ Contact Section */}
         <section
