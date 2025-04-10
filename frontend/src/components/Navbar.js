@@ -9,10 +9,34 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openMobileDropdowns, setOpenMobileDropdowns] = useState({});
+  const [activeSection, setActiveSection] = useState("");
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+
+      const sectionIds = [
+        "home",
+        "about",
+        "services",
+        "products",
+        "why-us",
+        "contact",
+      ];
+
+      for (let id of sectionIds) {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 80 && rect.bottom >= 80) {
+            setActiveSection(`#${id}`);
+            break;
+          }
+        }
+      }
+    };
+
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setOpenDropdown(null);
@@ -45,9 +69,12 @@ export default function Navbar() {
       { name: "NotifyBot", href: "#products", id: "NotifyBot" },
     ],
     Services: [
-      { name: "AI Software", href: "#services" },
-      { name: "Data Management", href: "#services" },
-      { name: "Consulting", href: "#services" },
+      { name: "AI-Driven Software Development", href: "#ai" },
+      { name: "Enterprise Software Development", href: "#data" },
+      { name: "Database Management & Smart Optimization", href: "#database" },
+      { name: "Data Engineering & Analytics", href: "#data-eng" },
+      { name: "System Integration & API Engineering", href: "#integration" },
+      { name: "Full-Cycle Product Development", href: "#product-development" },
     ],
     Careers: [
       { name: "Open Roles", href: "/careers" },
@@ -95,14 +122,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-        <img
-              src="/Newlogo.png"
-              alt="Maverick Ignite Logo"
-              className="h-12 sm:h-16 w-auto object-contain block"
-            />
+          <img
+            src="/Newlogo.png"
+            alt="Maverick Ignite Logo"
+            className="h-12 sm:h-16 w-auto object-contain block"
+          />
           <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
-              MaverickIgnite
-            </span>
+            MaverickIgnite
+          </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -117,7 +144,9 @@ export default function Navbar() {
                   onClick={() =>
                     setOpenDropdown(openDropdown === item.name ? null : item.name)
                   }
-                  className="flex items-center gap-1 nav-link tracking-wide cursor-pointer"
+                  className={`flex items-center gap-1 nav-link tracking-wide cursor-pointer ${
+                    activeSection === item.href ? "text-cyan-400" : ""
+                  }`}
                 >
                   {item.name}
                   <ChevronDown size={16} />
@@ -125,14 +154,16 @@ export default function Navbar() {
               ) : (
                 <a
                   href={item.href}
-                  className="nav-link tracking-wide cursor-pointer"
+                  className={`nav-link tracking-wide cursor-pointer ${
+                    activeSection === item.href ? "text-cyan-400" : ""
+                  }`}
                 >
                   {item.name}
                 </a>
               )}
 
               {openDropdown === item.name && (
-                <div className="absolute top-full left-0 mt-2 bg-[#0a1224] shadow-lg rounded-md py-2 w-48 z-50">
+                <div className="absolute top-full left-0 mt-2 bg-[#0a1224] shadow-lg rounded-md py-2 w-52 z-50">
                   {dropdownItems[item.name].map((subItem) =>
                     item.name === "Products" ? (
                       <button
@@ -201,7 +232,9 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block nav-link text-sm tracking-wide"
+                  className={`block nav-link text-sm tracking-wide ${
+                    activeSection === item.href ? "text-cyan-400" : ""
+                  }`}
                 >
                   {item.name}
                 </a>

@@ -22,7 +22,7 @@ const servicesData = [
         ]
       }
     ]
-  },  
+  },
   {
     id: 'data',
     title: 'Enterprise Software Development',
@@ -41,7 +41,6 @@ const servicesData = [
       },
     ],
   },
-  
   {
     id: 'database',
     title: 'Database Management & Smart Optimization',
@@ -82,25 +81,6 @@ const servicesData = [
     ]
   },
   {
-    id: 'product-development',
-    title: 'Full-Cycle Product Development',
-    short: 'From idea to MVP to enterprise-grade product.',
-    details: [
-      'We partner with you across the entire product lifecycle — from ideation to launch and beyond.',
-      'Whether you\'re building a SaaS platform, mobile app, or internal tool, we bring UI/UX, engineering, QA, and DevOps expertise to the table.',
-      {
-        heading: 'What we offer:',
-        items: [
-          'MVP development for startups',
-          'Scalable product architecture',
-          'Agile project delivery',
-          'Product UI/UX design',
-          'Ongoing support & iteration'
-        ]
-      }
-    ]
-  },  
-  {
     id: 'integration',
     title: 'System Integration & API Engineering',
     short: 'Unify your tech ecosystem with seamless integrations',
@@ -118,7 +98,26 @@ const servicesData = [
         ]
       }
     ]
-  },    
+  },
+  {
+    id: 'product-development',
+    title: 'Full-Cycle Product Development',
+    short: 'From idea to MVP to enterprise-grade product.',
+    details: [
+      'We partner with you across the entire product lifecycle — from ideation to launch and beyond.',
+      'Whether you\'re building a SaaS platform, mobile app, or internal tool, we bring UI/UX, engineering, QA, and DevOps expertise to the table.',
+      {
+        heading: 'What we offer:',
+        items: [
+          'MVP development for startups',
+          'Scalable product architecture',
+          'Agile project delivery',
+          'Product UI/UX design',
+          'Ongoing support & iteration'
+        ]
+      }
+    ]
+  }
 ];
 
 export default function Services() {
@@ -147,7 +146,6 @@ export default function Services() {
             >
               <div>
                 <h3 className="text-xl font-bold">{service.title}</h3>
-                <p className="text-gray-300">{service.short}</p>
               </div>
               <ChevronDown
                 className={`ml-4 transition-transform duration-300 ${
@@ -156,38 +154,54 @@ export default function Services() {
               />
             </div>
 
-            {/* Details Dropdown */}
+            {/* Always visible short description */}
+            <p className="text-gray-300 mt-3">{service.short}</p>
+
             <AnimatePresence>
               {activeIndex === idx && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="overflow-hidden mt-4"
+                  transition={{ duration: 0.5 }}
+                  className="overflow-hidden mt-4 space-y-4"
                 >
-                  <ul className=" list-inside text-gray-200 pl-1 space-y-2">
-  {service.details.map((item, i) => {
-    if (typeof item === 'string') {
-      return <li key={i}>{item}</li>;
-    } else if (typeof item === 'object' && item.heading && item.items) {
-      return (
-        <li key={i}>
-          <strong className="block mb-1">{item.heading}</strong>
-          <ul className="list-none pl-2 space-y-1">
-            {item.items.map((subItem, j) => (
-              <li key={j} className="flex items-start">
-                <span className="text-green-400 mr-2">✓</span>
-                <span>{subItem}</span>
-              </li>
-            ))}
-          </ul>
-        </li>
-      );
-    }
-  })}
-</ul>
+                  {/* Animated paragraphs */}
+                  {service.details.map((item, i) =>
+                    typeof item === 'string' ? (
+                      <p key={i} className="text-gray-300">
+                        {item}
+                      </p>
+                    ) : null
+                  )}
 
+                  {/* Animated "What we offer" */}
+                  {service.details.map((item, i) => {
+                    if (typeof item === 'object' && item.heading && item.items) {
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <strong className="block mb-2 text-white">
+                            {item.heading}
+                          </strong>
+                          <ul className="list-none pl-2 space-y-1 text-gray-200">
+                            {item.items.map((subItem, j) => (
+                              <li key={j} className="flex items-start">
+                                <span className="text-green-400 mr-2">✓</span>
+                                <span>{subItem}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      );
+                    }
+                    return null;
+                  })}
                 </motion.div>
               )}
             </AnimatePresence>

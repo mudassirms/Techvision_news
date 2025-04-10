@@ -10,18 +10,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
-          <Link href="/" className="flex items-center mb-3 space-x-2">
+          <Link href="/" className="flex items-center  space-x">
             <img
               src="/Newlogo.png"
               alt="Maverick Ignite Logo"
-              className="h-12 sm:h-16 w-auto object-contain block"
+              className="h-15 sm:h-16 w-auto object-contain block"
             />
             <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
               MaverickIgnite
             </span>
           </Link>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Maverick Ignite LLP specializes in AI software development, data
+          MaverickIgnite Solutions LLP specializes in AI software development, data
             management, and system integration solutions.
           </p>
           <div className="flex space-x-4 mt-4 text-xl">
@@ -67,10 +67,12 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Services</h4>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><a href="#ai" className="hover:text-cyan-300">AI Software Development</a></li>
-            <li><a href="#data" className="hover:text-cyan-300">Data Management</a></li>
-            <li><a href="#integration" className="hover:text-cyan-300">System Integration</a></li>
-            <li><a href="#consulting" className="hover:text-cyan-300">AI Consulting</a></li>
+            <li><a href="#ai" className="hover:text-cyan-300">AI-Driven Software Development</a></li>
+            <li><a href="#data" className="hover:text-cyan-300">Enterprise Software Development</a></li>
+            <li><a href="#database" className="hover:text-cyan-300">Database Management & Smart Optimization</a></li>
+            <li><a href="#data-eng" className="hover:text-cyan-300">Data Engineering & Analytics</a></li>
+            <li><a href="#integration" className="hover:text-cyan-300">System Integration & API Engineering</a></li>
+            <li><a href="#product-development" className="hover:text-cyan-300">Full-Cycle Product Development</a></li>
           </ul>
         </div>
 
@@ -100,7 +102,7 @@ export default function Footer() {
       {/* Bottom Strip */}
       <div className="border-t border-[#1f2a3a] mt-12 pt-9 text-center text-gray-400 text-xl px-5">
         <p className="mb-2">
-          © 2025 <span className="text-white font-semibold">Maverick Ignite Solutions LLP</span>. All rights reserved.
+          © 2025 <span className="text-white font-semibold">MaverickIgnite Solutions LLP</span>. All rights reserved.
         </p>
         <div className="flex justify-center gap-3 flex-wrap text-xm sm:text-sm">
           <Link href="/privacy-policy" className="hover:text-cyan-300">Privacy Policy</Link>
