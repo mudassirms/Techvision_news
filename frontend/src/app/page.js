@@ -148,7 +148,7 @@ export default function Home() {
 
         {/* ✅ Product Section */}
         <Product />
-
+        <WaveSection />
         <IntelligentBusinessSection />
 
         <HUDDivider /> {/* Futuristic HUD divider */}
