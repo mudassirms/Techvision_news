@@ -2,6 +2,52 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import Image from 'next/image';
+
+const serviceIcons = {
+  ai: "/service1.png",
+  data: "/service2.png",
+  database: "/service3.png",
+  'data-eng': "/service4.png",
+  integration: "/service5.png",
+  'product-development': "/service6.png",
+};
+
+const animationVariants = {
+  ai: {
+    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
+    transition: { duration: 3, repeat: Infinity, repeatType: 'loop' },
+  },
+  data: {
+    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
+    transition: { duration: 2.5, repeat: Infinity, repeatType: 'loop' },
+  },
+  database: {
+    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
+    transition: { duration: 4, repeat: Infinity, repeatType: 'loop' },
+  },
+  'data-eng': {
+    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
+    transition: { duration: 2, repeat: Infinity, repeatType: 'loop' },
+  },
+  integration: {
+    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
+    transition: { duration: 3, repeat: Infinity, repeatType: 'loop' },
+  },
+  'product-development': {
+    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
+    transition: { duration: 2.2, repeat: Infinity, repeatType: 'loop' },
+  },
+};
+
+const imageSizes = {
+  ai: { width: 'w-60', height: 'h-50', mdWidth: 'md:w-88', mdHeight: 'md:h-62' },
+  data: { width: 'w-40', height: 'h-42', mdWidth: 'md:w-90', mdHeight: 'md:h-48' },
+  database: { width: 'w-40', height: 'h-42', mdWidth: 'md:w-90', mdHeight: 'md:h-44' },
+  'data-eng': { width: 'w-60', height: 'h-60', mdWidth: 'md:w-70', mdHeight: 'md:h-60' },
+  integration: { width: 'w-50', height: 'h-50', mdWidth: 'md:w-90', mdHeight: 'md:h-65' },
+  'product-development': { width: 'w-48', height: 'h-48', mdWidth: 'md:w-90', mdHeight: 'md:h-65' },
+};
 
 const servicesData = [
   {
@@ -9,8 +55,8 @@ const servicesData = [
     title: 'AI-Driven Software Development',
     short: 'Building smarter applications powered by artificial intelligence.',
     details: [
-      'We develop intelligent applications that harness the power of AI and machine learning to enhance automation, personalization, and decision-making.',
-      'From recommendation engines to intelligent chatbots and predictive analytics, our AI-driven development approach ensures your software evolves with your business needs.',
+      'We develop intelligent applications that harness the power of AI and machine learning...',
+      'From recommendation engines to intelligent chatbots...',
       {
         heading: 'What we offer:',
         items: [
@@ -18,17 +64,17 @@ const servicesData = [
           'Natural Language Processing (NLP)',
           'Computer Vision solutions',
           'AI integration in web & mobile apps',
-          'MLOps and lifecycle management'
-        ]
-      }
-    ]
+          'MLOps and lifecycle management',
+        ],
+      },
+    ],
   },
   {
     id: 'data',
     title: 'Enterprise Software Development',
     short: 'Robust, scalable systems tailored for modern enterprises.',
     details: [
-      'We design and develop enterprise-grade software platforms that power mission-critical operations. Whether it’s ERP, CRM, or a custom management system, we focus on security, scalability, and performance.',
+      'We design and develop enterprise-grade platforms...',
       {
         heading: 'What we offer:',
         items: [
@@ -46,8 +92,7 @@ const servicesData = [
     title: 'Database Management & Smart Optimization',
     short: 'Secure, high-performance data systems with AI-enhanced optimization',
     details: [
-      'We specialize in building and managing robust database infrastructures that are secure, scalable, and fine-tuned for high performance.',
-      'Using AI-driven insights and automation, we proactively monitor, tune, and optimize your databases for smarter querying, better indexing, and cost-effective scaling.',
+      'We specialize in managing robust databases...',
       {
         heading: 'What we offer:',
         items: [
@@ -55,19 +100,17 @@ const servicesData = [
           'Performance tuning & query optimization',
           'Indexing strategies using AI insights',
           'Backup, recovery, and data retention strategies',
-          'Data archiving & lifecycle management',
-          'Cloud DB migration & modernization (AWS RDS, Azure, GCP)'
-        ]
-      }
-    ]
+          'Cloud DB migration & modernization',
+        ],
+      },
+    ],
   },
   {
     id: 'data-eng',
     title: 'Data Engineering & Analytics',
     short: 'Turn raw data into valuable business intelligence',
     details: [
-      'We build modern data pipelines that collect, clean, transform, and serve your data efficiently.',
-      'Our data engineering solutions enable real-time analytics and reporting, empowering smarter business decisions.',
+      'We build modern data pipelines that serve your data efficiently.',
       {
         heading: 'What we offer:',
         items: [
@@ -75,10 +118,10 @@ const servicesData = [
           'Real-time & batch processing',
           'Data warehousing (Snowflake, BigQuery, Redshift)',
           'Dashboarding and business intelligence',
-          'Data governance & quality assurance'
-        ]
-      }
-    ]
+          'Data governance & quality assurance',
+        ],
+      },
+    ],
   },
   {
     id: 'integration',
@@ -86,7 +129,6 @@ const servicesData = [
     short: 'Unify your tech ecosystem with seamless integrations',
     details: [
       'We integrate your tools, platforms, and services into one cohesive system.',
-      'From legacy modernization to REST API development, we ensure data flows smoothly across your infrastructure.',
       {
         heading: 'What we offer:',
         items: [
@@ -94,10 +136,10 @@ const servicesData = [
           'Third-party integrations (CRM, ERP, etc.)',
           'Middleware solutions',
           'Legacy system integration',
-          'Secure data exchange protocols'
-        ]
-      }
-    ]
+          'Secure data exchange protocols',
+        ],
+      },
+    ],
   },
   {
     id: 'product-development',
@@ -105,7 +147,6 @@ const servicesData = [
     short: 'From idea to MVP to enterprise-grade product.',
     details: [
       'We partner with you across the entire product lifecycle — from ideation to launch and beyond.',
-      'Whether you\'re building a SaaS platform, mobile app, or internal tool, we bring UI/UX, engineering, QA, and DevOps expertise to the table.',
       {
         heading: 'What we offer:',
         items: [
@@ -113,11 +154,11 @@ const servicesData = [
           'Scalable product architecture',
           'Agile project delivery',
           'Product UI/UX design',
-          'Ongoing support & iteration'
-        ]
-      }
-    ]
-  }
+          'Ongoing support & iteration',
+        ],
+      },
+    ],
+  },
 ];
 
 export default function Services() {
@@ -129,24 +170,19 @@ export default function Services() {
 
   return (
     <div id="services" className="py-12 px-6 md:px-10 text-white">
-      <h2 className="text-3xl font-bold text-center mb-10 text-[#00ffc2]">
-        Our Services
-      </h2>
+      <h2 className="text-3xl font-bold text-center mb-10 text-[#00ffc2]">Our Services</h2>
 
       <div className="flex flex-col gap-6">
         {servicesData.map((service, idx) => (
           <div
             key={service.id}
-            id={service.id}
             className="bg-[#1a1a2e]/40 p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
           >
             <div
               className="flex items-center justify-between cursor-pointer"
               onClick={() => handleClick(idx)}
             >
-              <div>
-                <h3 className="text-xl font-bold">{service.title}</h3>
-              </div>
+              <h3 className="text-xl font-bold">{service.title}</h3>
               <ChevronDown
                 className={`ml-4 transition-transform duration-300 ${
                   activeIndex === idx ? 'rotate-180' : ''
@@ -154,7 +190,6 @@ export default function Services() {
               />
             </div>
 
-            {/* Always visible short description */}
             <p className="text-gray-300 mt-3">{service.short}</p>
 
             <AnimatePresence>
@@ -164,44 +199,63 @@ export default function Services() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="overflow-hidden mt-4 space-y-4"
+                  className="overflow-hidden mt-5 space-y-4 flex flex-col md:flex-row justify-between gap-10"
                 >
-                  {/* Animated paragraphs */}
-                  {service.details.map((item, i) =>
-                    typeof item === 'string' ? (
-                      <p key={i} className="text-gray-300">
-                        {item}
-                      </p>
-                    ) : null
-                  )}
+                  <div className="flex-1 space-y-4">
+                    {service.details.map((item, i) =>
+                      typeof item === 'string' ? (
+                        <p key={i} className="text-gray-300">{item}</p>
+                      ) : null
+                    )}
 
-                  {/* Animated "What we offer" */}
-                  {service.details.map((item, i) => {
-                    if (typeof item === 'object' && item.heading && item.items) {
-                      return (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ delay: 0.2 }}
-                        >
-                          <strong className="block mb-2 text-white">
-                            {item.heading}
-                          </strong>
-                          <ul className="list-none pl-2 space-y-1 text-gray-200">
-                            {item.items.map((subItem, j) => (
-                              <li key={j} className="flex items-start">
-                                <span className="text-green-400 mr-2">✓</span>
-                                <span>{subItem}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      );
-                    }
-                    return null;
-                  })}
+                    {service.details.map((item, i) => {
+                      if (typeof item === 'object' && item.heading && item.items) {
+                        return (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            <strong className="block mb-2 text-white">{item.heading}</strong>
+                            <ul className="list-none pl-2 space-y-1 text-gray-200">
+                              {item.items.map((subItem, j) => (
+                                <li key={j} className="flex items-start">
+                                  <span className="text-green-400 mr-4">✓</span>
+                                  <span>{subItem}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        );
+                      }
+                      return null;
+                    })}
+                  </div>
+
+                  <motion.div
+                    className="flex justify-center items-center w-full md:w-auto mt-6 md:mt-0 pr-2 md:pr-6"
+                    initial={{ opacity: 0 }}
+                    animate={animationVariants[service.id].animate}
+                    transition={animationVariants[service.id].transition}
+                  >
+                    <div
+                      className={`relative 
+                        ${imageSizes[service.id].width} 
+                        ${imageSizes[service.id].height} 
+                        ${imageSizes[service.id].mdWidth} 
+                        ${imageSizes[service.id].mdHeight}`}
+                    >
+                      <Image
+                        src={serviceIcons[service.id]}
+                        alt={`${service.title} Icon`}
+                        fill
+                        className="object-contain brightness-300"
+                        style={{ filter: 'drop-shadow(0 0 65px #00ffc2)' }}
+                      />
+                    </div>
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>
