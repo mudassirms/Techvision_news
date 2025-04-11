@@ -338,4 +338,8 @@ html, body {
   animation: glow 2s infinite ease-in-out;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* adjust based on your navbar height */
+}
 

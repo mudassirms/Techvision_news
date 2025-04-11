@@ -71,12 +71,12 @@ export default function Navbar() {
       { name: "NotifyBot", href: "#products", id: "NotifyBot" },
     ],
     Services: [
-      { name: "AI-Driven Software Development", href: "#ai" },
-      { name: "Enterprise Software Development", href: "#data" },
-      { name: "Database Management & Smart Optimization", href: "#database" },
-      { name: "Data Engineering & Analytics", href: "#data-eng" },
-      { name: "System Integration & API Engineering", href: "#integration" },
-      { name: "Full-Cycle Product Development", href: "#product-development" },
+      { name: "AI-Driven Software Development", href: "#services", id: "ai" },
+      { name: "Enterprise Software Development", href: "#services", id: "data" },
+      { name: "Database Management & Smart Optimization", href: "#services", id: "database" },
+      { name: "Data Engineering & Analytics", href: "#services", id: "data-eng" },
+      { name: "System Integration & API Engineering", href: "#services", id: "integration" },
+      { name: "Full-Cycle Product Development", href: "#services", id: "product-development" },
     ],
     Careers: [
       { name: "Open Roles", href: "/careers" },
@@ -87,18 +87,28 @@ export default function Navbar() {
   const isDropdown = (name) => Object.keys(dropdownItems).includes(name);
 
   const scrollToSection = (hash) => {
-    if (pathname === "/") {
-      const el = document.getElementById(hash.replace("#", ""));
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
+    const sectionId = hash.replace("#", "");
+  
+    if (pathname !== "/") {
       router.push(`/${hash}`);
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
+  
 
   const handleNavClick = (href) => {
     setIsMenuOpen(false);
     setOpenDropdown(null);
-    scrollToSection(href);
+
+    if (href.startsWith("#")) {
+      scrollToSection(href);
+    } else {
+      router.push(href);
+    }
   };
 
   const toggleMobileDropdown = (itemName) => {
@@ -117,24 +127,24 @@ export default function Navbar() {
       } border-b border-[#1f2a3a]`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-        {/* ✅ Responsive Logo with Text */}
+        {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 mb-3">
-            <img
-              src="/Newlogo4.png"
-              alt="Maverick Ignite Logo"
-              className="h-10 sm:h-14 w-auto object-contain"
-            />
-            <div className="leading-tight">
-              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
-                MAVERICK IGNITE
-              </h1>
-              <p className="text-sm font-bold text-gray-300 -mt-1 tracking-wide">
-                SOLUTIONS LLP
-              </p>
-            </div>
-          </Link>
+          <img
+            src="/Newlogo4.png"
+            alt="Maverick Ignite Logo"
+            className="h-10 sm:h-14 w-auto object-contain"
+          />
+          <div className="leading-tight">
+            <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+              MAVERICK IGNITE
+            </h1>
+            <p className="text-sm font-bold text-gray-300 -mt-1 tracking-wide">
+              SOLUTIONS LLP
+            </p>
+          </div>
+        </Link>
 
-        {/* ✅ Desktop Navigation */}
+        {/* Desktop Nav */}
         <nav
           className="hidden md:flex items-center space-x-4 xl:space-x-6 text-sm font-medium text-white"
           ref={dropdownRef}
@@ -185,7 +195,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* ✅ Mobile Menu Toggle */}
+        {/* Mobile menu toggle */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden text-white"
@@ -194,7 +204,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* ✅ Mobile Dropdown Menu */}
+      {/* Mobile dropdown menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-[#050d1b]/95 backdrop-blur-md text-white px-5 py-4 space-y-4 transition-all duration-300">
           {navItems.map((item) => (
