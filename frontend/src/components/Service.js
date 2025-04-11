@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const serviceIcons = {
   ai: "/service1.png",
-  data: "/service2.png",
+  data: "/service.png",
   database: "/service3.png",
   'data-eng': "/service4.png",
   integration: "/service5.png",
@@ -198,7 +198,7 @@ export default function Services() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.3 }}
                   className="overflow-hidden mt-5 space-y-4 flex flex-col md:flex-row justify-between gap-10"
                 >
                   <div className="flex-1 space-y-4">
