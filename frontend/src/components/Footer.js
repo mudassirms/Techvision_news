@@ -110,10 +110,10 @@ export default function Footer() {
             <p className="text-gray-300 text-sm">
               Email:{" "}
               <a
-                href="mailto:info@maverickignite.com"
+                href="mailto:Business@maverickignite.com"
                 className="hover:text-cyan-300"
               >
-                info@maverickignite.com
+                Business@maverickignite.com
               </a>
             </p>
             <p className="text-gray-300 text-sm mt-2">
