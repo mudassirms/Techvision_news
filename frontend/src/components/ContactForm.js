@@ -56,8 +56,8 @@ export default function ContactForm() {
 
     emailjs
       .send(
-        "service_c8vvm1e", // replace with your service ID
-        "template_1hxwllk", // replace with your template ID
+        "service_04odo0c", //your service ID
+        "template_gqgqb4c", //your template ID
         {
           name,
           email,
@@ -66,7 +66,7 @@ export default function ContactForm() {
           time: new Date().toLocaleString(),
           title: "New Contact Form Submission",
         },
-        "jcssRf25WKtjOrVv0" // replace with your public key
+        "M-pTkSNkHoQjr6oSd" //your public key
       )
       .then(() => {
         toast.success("✅ Message sent successfully!");
