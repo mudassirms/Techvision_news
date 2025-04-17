@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "MaverickIgnite",
+  title: "TechVisionary",
   description: "Enterprise solutions powered by AI and innovation",
 };
 

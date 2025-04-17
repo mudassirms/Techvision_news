@@ -38,7 +38,8 @@ const NeuralNetworkBackground = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0, 255, 200, ${1 - dist / 120})`;
+            // Gradient-style color: purplish mix of red and blue
+            ctx.strokeStyle = `rgba(138, 43, 226, ${1 - dist / 120})`; // bluish purple
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -51,7 +52,8 @@ const NeuralNetworkBackground = () => {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(0, 255, 255, ${1 - distMouse / 150})`;
+          // Mix of red and blue
+          ctx.strokeStyle = `rgba(255, 0, 255, ${1 - distMouse / 150})`; // magenta (red + blue)
           ctx.stroke();
         }
       }
@@ -59,8 +61,8 @@ const NeuralNetworkBackground = () => {
       for (let p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = "#00fff7";
-        ctx.shadowColor = "#00ffc2";
+        ctx.fillStyle = "#ff00ff"; // magenta
+        ctx.shadowColor = "#ff003c#ff0066"; // purplish glow
         ctx.shadowBlur = 8;
         ctx.fill();
 

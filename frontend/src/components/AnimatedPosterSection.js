@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function AnimatedPosterSection() {
@@ -24,13 +23,13 @@ export default function AnimatedPosterSection() {
   return (
     <section
       ref={ref}
-      className="w-full bg-[#050d1b] py-18 px-5 flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-65"
+      className="w-full bg-[#050d1b] py-20 px-5 flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-32"
     >
-      {/* 📦 Image Section */}
+      {/* 🎥 Larger Video Section */}
       <motion.div
         animate={controls}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-sm flex-shrink-0"
+        className="w-full max-w-lg flex-shrink-0"
       >
         <motion.div
           animate={{
@@ -43,17 +42,17 @@ export default function AnimatedPosterSection() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="rounded-3xl overflow-hidden"
+          className="rounded-3xl overflow-hidden shadow-lg"
         >
-          <Image
-            src="/explore3.png"
-            alt="Animated Poster"
-            width={450}
-            height={450}
-            priority
-            unoptimized
-            className="rounded-3xl"
-          />
+          <video
+            autoPlay
+            loop
+            playsInline
+            className="w-full h-auto object-cover rounded-3xl"
+          >
+            <source src="/video3.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </motion.div>
       </motion.div>
 
@@ -64,14 +63,15 @@ export default function AnimatedPosterSection() {
         className="text-white max-w-xl"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-5">
-          Transform Ideas into AI Reality
+        Where Ideas Meet Execution — Building What You Imagine
         </h2>
         <p className="text-gray-300 text-lg mb-6">
-          Explore how our AI-powered development transforms your operations into seamless, intelligent experiences. Built for scalability, speed, and results.
+        You dream it — we design, build, and launch it into the world.
+        Empowering your vision with seamless, scalable, and smart application solutions.
         </p>
         <Link
           href="#services"
-          className="inline-block bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full font-medium transition"
+          className="inline-block bg-red-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full font-medium transition"
         >
           Explore Services
         </Link>

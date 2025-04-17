@@ -1,58 +1,30 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
 
-const serviceIcons = {
-  ai: "/service1.png",
-  data: "/service.png",
-  database: "/service3.png",
-  'data-eng': "/service4.png",
-  integration: "/service5.png",
-  'product-development': "/service6.png",
+const serviceVideos = {
+  ai: "/Service1.mp4",
+  data: "/service2.mp4",
+  database: "/Service3.mp4",
+  'data-eng': "/VIDEO2.mp4",
+  // integration: "/Service3.mp4",
+  'product-development': "/service2.mp4",
 };
 
-const animationVariants = {
-  ai: {
-    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
-    transition: { duration: 3, repeat: Infinity, repeatType: 'loop' },
-  },
-  data: {
-    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
-    transition: { duration: 2.5, repeat: Infinity, repeatType: 'loop' },
-  },
-  database: {
-    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
-    transition: { duration: 4, repeat: Infinity, repeatType: 'loop' },
-  },
-  'data-eng': {
-    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
-    transition: { duration: 2, repeat: Infinity, repeatType: 'loop' },
-  },
-  integration: {
-    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
-    transition: { duration: 3, repeat: Infinity, repeatType: 'loop' },
-  },
-  'product-development': {
-    animate: { scale: [1, 1.08, 1], opacity: [1, 0.8, 1] },
-    transition: { duration: 2.2, repeat: Infinity, repeatType: 'loop' },
-  },
-};
-
-const imageSizes = {
-  ai: { width: 'w-60', height: 'h-50', mdWidth: 'md:w-88', mdHeight: 'md:h-62' },
-  data: { width: 'w-40', height: 'h-42', mdWidth: 'md:w-90', mdHeight: 'md:h-48' },
-  database: { width: 'w-40', height: 'h-42', mdWidth: 'md:w-90', mdHeight: 'md:h-44' },
-  'data-eng': { width: 'w-60', height: 'h-60', mdWidth: 'md:w-70', mdHeight: 'md:h-60' },
-  integration: { width: 'w-50', height: 'h-50', mdWidth: 'md:w-90', mdHeight: 'md:h-65' },
-  'product-development': { width: 'w-48', height: 'h-48', mdWidth: 'md:w-90', mdHeight: 'md:h-65' },
+const videoSizes = {
+  ai: 'w-60 h-50 md:w-88 md:h-62',
+  data: 'w-40 h-42 md:w-90 md:h-48',
+  database: 'w-60 h-50 md:w-90 md:h-50',
+  'data-eng': 'w-80 h-70 md:w-90 md:h-70',
+  integration: 'w-50 h-50 md:w-90 md:h-65',
+  'product-development': 'w-48 h-48 md:w-90 md:h-65',
 };
 
 const servicesData = [
   {
     id: 'ai',
-    title: 'AI-Driven Software Development',
+    title: 'AI-Based Applications',
     short: 'Building smarter applications powered by artificial intelligence.',
     details: [
       'We develop intelligent applications that harness the power of AI and machine learning...',
@@ -71,36 +43,36 @@ const servicesData = [
   },
   {
     id: 'data',
-    title: 'Enterprise Software Development',
-    short: 'Robust, scalable systems tailored for modern enterprises.',
+    title: 'Data Science Applications',
+    short: 'Robust, scalable systems through Data Science.',
     details: [
-      'We design and develop enterprise-grade platforms...',
+      'We design and develop DataScience based platforms...',
       {
         heading: 'What we offer:',
         items: [
-          'Custom enterprise applications',
-          'Modular architecture & microservices',
-          'Secure authentication & role-based access',
-          'Integration with legacy and third-party systems',
-          'Long-term maintenance and support',
+          'Interactive dashboards for real-time business insights',
+          'Machine learning-based forecasting tools',
+          'Supervised/unsupervised model building tailored to business goals',
+          'Personalized product, content, or service suggestions',
+          'Full-stack integration into web or mobile apps',
         ],
       },
     ],
   },
   {
     id: 'database',
-    title: 'Database Management & Smart Optimization',
-    short: 'Secure, high-performance data systems with AI-enhanced optimization',
+    title: 'Web-Based Applications',
+    short: 'End-to-end data-driven apps — from frontend design to backend logic and database integration Built using (modern stacks MERN, Django + React, Flask + Vue, etc.)',
     details: [
-      'We specialize in managing robust databases...',
+      'We specialize in managing robust WebApplications...',
       {
         heading: 'What we offer:',
         items: [
-          'Database design & architecture (SQL & NoSQL)',
-          'Performance tuning & query optimization',
-          'Indexing strategies using AI insights',
-          'Backup, recovery, and data retention strategies',
-          'Cloud DB migration & modernization',
+          'Custom Analytics Portals',
+          'Interactive Data Dashboards',
+          'Predictive Web Applications',
+          'NLP-Based Tools',
+          'Full-Stack Web Applications',
         ],
       },
     ],
@@ -108,160 +80,129 @@ const servicesData = [
   {
     id: 'data-eng',
     title: 'Data Engineering & Analytics',
-    short: 'Turn raw data into valuable business intelligence',
+    short: 'Modern, user-friendly interfaces Wireframes, prototypes, and high-fidelity designs (using Figma, Adobe XD)',
     details: [
-      'We build modern data pipelines that serve your data efficiently.',
+      'We build Logo animations, explainer videos, and dynamic UI effects',
       {
         heading: 'What we offer:',
         items: [
-          'Data pipeline development (ETL/ELT)',
-          'Real-time & batch processing',
-          'Data warehousing (Snowflake, BigQuery, Redshift)',
-          'Dashboarding and business intelligence',
-          'Data governance & quality assurance',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'integration',
-    title: 'System Integration & API Engineering',
-    short: 'Unify your tech ecosystem with seamless integrations',
-    details: [
-      'We integrate your tools, platforms, and services into one cohesive system.',
-      {
-        heading: 'What we offer:',
-        items: [
-          'Custom API development & documentation',
-          'Third-party integrations (CRM, ERP, etc.)',
-          'Middleware solutions',
-          'Legacy system integration',
-          'Secure data exchange protocols',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'product-development',
-    title: 'Full-Cycle Product Development',
-    short: 'From idea to MVP to enterprise-grade product.',
-    details: [
-      'We partner with you across the entire product lifecycle — from ideation to launch and beyond.',
-      {
-        heading: 'What we offer:',
-        items: [
-          'MVP development for startups',
-          'Scalable product architecture',
-          'Agile project delivery',
-          'Product UI/UX design',
-          'Ongoing support & iteration',
+          'Branding & Identity Design',
+          'UI/UX Design for Web & Mobile',
+          'Marketing & Promotional Graphics',
+          'Presentation Design',
+          'Motion Graphics & Animations',
+          'Custom Illustration & Artworks'
         ],
       },
     ],
   },
 ];
 
-export default function Services() {
-  const [activeIndex, setActiveIndex] = useState(null);
+// Modal Component
+const ServiceModal = ({ service, onClose }) => {
+  if (!service) return null;
 
-  const handleClick = (idx) => {
-    setActiveIndex(activeIndex === idx ? null : idx);
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-red/70 backdrop-blur-sm">
+      <motion.div
+        className="bg-[#0b132b] rounded-xl max-w-5xl w-full mx-4 p-6 relative text-white shadow-2xl overflow-y-auto max-h-[90vh]"
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ duration: 0.3 }}
+      >
+        <button
+          className="absolute top-4 right-4 text-gray-400 hover:text-red-400 text-2xl"
+          onClick={onClose}
+        >
+          ×
+        </button>
+
+        <h3 className="text-2xl md:text-3xl font-bold mb-3 text-[rgba(242,184,83,0.77)]">{service.title}</h3>
+        <p className="text-gray-300 mb-4">{service.short}</p>
+
+        <div className="space-y-4">
+          {service.details.map((item, i) =>
+            typeof item === "string" ? (
+              <p key={i} className="text-gray-300">{item}</p>
+            ) : (
+              <div key={i}>
+                <strong className="block mb-2 text-white">{item.heading}</strong>
+                <ul className="list-none pl-2 space-y-1 text-gray-200">
+                  {item.items.map((subItem, j) => (
+                    <li key={j} className="flex items-start">
+                      <span className="text-green-400 mr-2">✓</span>
+                      <span>{subItem}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          )}
+        </div>
+
+        {/* Video */}
+        <div className="mt-8 flex justify-center">
+          <div className={`relative ${videoSizes[service.id]} rounded-lg overflow-hidden`}>
+            <video
+              src={serviceVideos[service.id]}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+// Main Component
+export default function Services() {
+  const [selectedService, setSelectedService] = useState(null);
+
+  const handleOpen = (service) => {
+    setSelectedService(service);
+  };
+
+  const handleClose = () => {
+    setSelectedService(null);
   };
 
   return (
     <div id="services" className="py-12 px-6 md:px-10 text-white">
-      <h2 className="text-3xl font-bold text-center mb-10 text-[#00ffc2]">Our Services</h2>
+      <h2 className="text-3xl font-bold text-center mb-10 text-[#540728]">Our Services</h2>
 
-      <div className="flex flex-col gap-6">
-        {servicesData.map((service, idx) => (
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {servicesData.map((service) => (
           <div
             key={service.id}
-            className="bg-[#1a1a2e]/40 p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition"
+            className="bg-[#1a1a2e]/40 p-6 rounded-xl border border-[#00ffc2]/20 hover:shadow-lg transition cursor-pointer group"
+            onClick={() => handleOpen(service)}
           >
-            <div
-              className="flex items-center justify-between cursor-pointer"
-              onClick={() => handleClick(idx)}
-            >
+            <div className="flex items-center justify-between">
               <h3 className="text-xl font-bold">{service.title}</h3>
-              <ChevronDown
-                className={`ml-4 transition-transform duration-300 ${
-                  activeIndex === idx ? 'rotate-180' : ''
-                }`}
-              />
+              <ChevronRight className="text-[#00ffc2] transition-transform duration-300 group-hover:translate-x-1" />
             </div>
-
             <p className="text-gray-300 mt-3">{service.short}</p>
-
-            <AnimatePresence>
-              {activeIndex === idx && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden mt-5 space-y-4 flex flex-col md:flex-row justify-between gap-10"
-                >
-                  <div className="flex-1 space-y-4">
-                    {service.details.map((item, i) =>
-                      typeof item === 'string' ? (
-                        <p key={i} className="text-gray-300">{item}</p>
-                      ) : null
-                    )}
-
-                    {service.details.map((item, i) => {
-                      if (typeof item === 'object' && item.heading && item.items) {
-                        return (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ delay: 0.2 }}
-                          >
-                            <strong className="block mb-2 text-white">{item.heading}</strong>
-                            <ul className="list-none pl-2 space-y-1 text-gray-200">
-                              {item.items.map((subItem, j) => (
-                                <li key={j} className="flex items-start">
-                                  <span className="text-green-400 mr-4">✓</span>
-                                  <span>{subItem}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </motion.div>
-                        );
-                      }
-                      return null;
-                    })}
-                  </div>
-
-                  <motion.div
-                    className="flex justify-center items-center w-full md:w-auto mt-6 md:mt-0 pr-2 md:pr-6"
-                    initial={{ opacity: 0 }}
-                    animate={animationVariants[service.id].animate}
-                    transition={animationVariants[service.id].transition}
-                  >
-                    <div
-                      className={`relative 
-                        ${imageSizes[service.id].width} 
-                        ${imageSizes[service.id].height} 
-                        ${imageSizes[service.id].mdWidth} 
-                        ${imageSizes[service.id].mdHeight}`}
-                    >
-                      <Image
-                        src={serviceIcons[service.id]}
-                        alt={`${service.title} Icon`}
-                        fill
-                        className="object-contain brightness-300"
-                        style={{ filter: 'drop-shadow(0 0 65px #00ffc2)' }}
-                      />
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         ))}
       </div>
+
+      {/* Modal Popup */}
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <ServiceModal service={selectedService} onClose={handleClose} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

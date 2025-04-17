@@ -20,14 +20,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
 
-      const sectionIds = [
-        "home",
-        "about",
-        "services",
-        "products",
-        "contact",
-      ];
-
+      const sectionIds = ["home", "about", "services", "products", "contact"];
       for (let id of sectionIds) {
         const section = document.getElementById(id);
         if (section) {
@@ -59,24 +52,22 @@ export default function Navbar() {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Products", href: "#products" },
+    // { name: "Products", href: "#products" },
     { name: "Contact", href: "#contact" },
-    { name: "Careers", href: "/careers" },
+    // { name: "Careers", href: "/careers" },
   ];
 
   const dropdownItems = {
-    Products: [
-      { name: "DataSense", href: "#products", id: "DataSense" },
-      { name: "SupportSense", href: "#products", id: "SupportSense" },
-      { name: "NotifyBot", href: "#products", id: "NotifyBot" },
-    ],
+    // Products: [
+    //   { name: "DataSense", href: "#products", id: "DataSense" },
+    //   { name: "SupportSense", href: "#products", id: "SupportSense" },
+    //   { name: "NotifyBot", href: "#products", id: "NotifyBot" },
+    // ],
     Services: [
-      { name: "AI-Driven Software Development", href: "#services", id: "ai" },
-      { name: "Enterprise Software Development", href: "#services", id: "data" },
-      { name: "Database Management & Smart Optimization", href: "#services", id: "database" },
-      { name: "Data Engineering & Analytics", href: "#services", id: "data-eng" },
-      { name: "System Integration & API Engineering", href: "#services", id: "integration" },
-      { name: "Full-Cycle Product Development", href: "#services", id: "product-development" },
+      { name: "AI-Based Applications", href: "#services", id: "ai" },
+      { name: "Data Science Applications", href: "#services", id: "data" },
+      { name: "Web-Based Applications", href: "#services", id: "database" },
+      { name: "Graphic Designs", href: "#services", id: "data-eng" },
     ],
     Careers: [
       { name: "Open Roles", href: "/careers" },
@@ -88,7 +79,6 @@ export default function Navbar() {
 
   const scrollToSection = (hash) => {
     const sectionId = hash.replace("#", "");
-  
     if (pathname !== "/") {
       router.push(`/${hash}`);
     } else {
@@ -98,12 +88,10 @@ export default function Navbar() {
       }
     }
   };
-  
 
   const handleNavClick = (href) => {
     setIsMenuOpen(false);
     setOpenDropdown(null);
-
     if (href.startsWith("#")) {
       scrollToSection(href);
     } else {
@@ -121,28 +109,21 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#050d1b]/90 backdrop-blur-md py-2"
-          : "bg-[#050d1b] py-2"
-      } border-b border-[#1f2a3a]`}
+        isScrolled ? "bg-[#050d1b]/90 backdrop-blur-md py-1" : "bg-[#050d1b]/60 py-2"
+      } border-b border-cyan-400/10 shadow-md`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[80px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-3 mb-3">
-          <img
-            src="/Newlogo4.png"
-            alt="Maverick Ignite Logo"
-            className="h-10 sm:h-14 w-auto object-contain"
-          />
-          <div className="leading-tight">
-            <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
-              MAVERICK IGNITE
-            </h1>
-            <p className="text-sm font-bold text-gray-300 -mt-1 tracking-wide">
-              SOLUTIONS LLP
-            </p>
-          </div>
-        </Link>
+        <Link href="/" className="flex items-center space-x-4 mb-4">
+  <img
+    src="/Logo.png" // Replace with the path to your logo
+    alt="Your Logo"
+    className={`w-auto object-contain transition-all duration-300 ${
+      isScrolled ? "h-25 sm:h-45" : "h-30 sm:h-50"
+    }`}
+  />
+</Link>
 
         {/* Desktop Nav */}
         <nav
@@ -150,13 +131,13 @@ export default function Navbar() {
           ref={dropdownRef}
         >
           {navItems.map((item) => (
-            <div key={item.name} className="relative">
+            <div key={item.name} className="relative group">
               {isDropdown(item.name) ? (
                 <button
                   onClick={() =>
                     setOpenDropdown(openDropdown === item.name ? null : item.name)
                   }
-                  className={`flex items-center gap-1 nav-link tracking-wide cursor-pointer ${
+                  className={`flex items-center gap-1 tracking-wide hover:text-cyan-300 transition duration-300 ${
                     activeSection === item.href ? "text-cyan-400" : ""
                   }`}
                 >
@@ -166,7 +147,7 @@ export default function Navbar() {
               ) : (
                 <button
                   onClick={() => handleNavClick(item.href)}
-                  className={`nav-link tracking-wide cursor-pointer ${
+                  className={`tracking-wide hover:text-cyan-300 transition duration-300 ${
                     activeSection === item.href ? "text-cyan-400" : ""
                   }`}
                 >
@@ -175,7 +156,7 @@ export default function Navbar() {
               )}
 
               {openDropdown === item.name && (
-                <div className="absolute top-full left-0 mt-2 bg-[#0a1224] shadow-lg rounded-md py-2 w-52 z-50">
+                <div className="absolute top-full left-0 mt-2 bg-[#0a1224]/90 backdrop-blur-md shadow-xl rounded-md py-2 w-56 border border-cyan-500/10 z-50">
                   {dropdownItems[item.name].map((subItem) => (
                     <button
                       key={subItem.name}
@@ -184,7 +165,7 @@ export default function Navbar() {
                           ? router.push(subItem.href)
                           : handleNavClick(subItem.href)
                       }
-                      className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-cyan-700/30 transition"
+                      className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-cyan-700/30 transition-all"
                     >
                       {subItem.name}
                     </button>
@@ -225,7 +206,7 @@ export default function Navbar() {
               ) : (
                 <button
                   onClick={() => handleNavClick(item.href)}
-                  className={`block nav-link text-sm tracking-wide ${
+                  className={`block text-sm tracking-wide ${
                     activeSection === item.href ? "text-cyan-400" : ""
                   }`}
                 >
