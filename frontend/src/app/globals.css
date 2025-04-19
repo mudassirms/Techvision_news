@@ -1,14 +1,15 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 
 /*======================
   Root Theme Variables
 =======================*/
 :root {
-  --background: #0f0c29;
+  --background: #1a0c0d; /* Dark reddish black */
   --foreground: #ffffff;
-  --primary: #00f5a0; /* Neon green */
-  --secondary: #302b63; /* Dark blue */
-  --accent: #00d9f5;   /* Neon blue */
+  --primary: #ff4c4c; /* Neon red */
+  --secondary: #5c1a1a; /* Dark red */
+  --accent: #ff7f7f;   /* Light neon red */
   --highlight: #ffffff;
 
   --neon-glow: 0 0 8px var(--primary), 0 0 16px var(--accent);
@@ -17,7 +18,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f0c29;
+    --background: #1a0c0d;
     --foreground: #e5e7eb;
   }
 }
@@ -29,16 +30,12 @@ html {
   scroll-padding-top: 5rem;
   scroll-behavior: smooth;
 }
-
 body {
-  background: linear-gradient(135deg, var(--background), var(--secondary));
-  color: var(--foreground);
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  background: linear-gradient(135deg, #1a0c0d, #2b0d0e); /* Dark reddish-black gradient */
+  color: #f8d7da;
+  font-family: 'Poppins', sans-serif;
 }
+
 body::before {
   content: "";
   position: fixed;
@@ -47,11 +44,24 @@ body::before {
   transform: translate(-50%, -50%);
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(0, 255, 194, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 76, 76, 0.1) 0%, transparent 70%);
   z-index: -2;
-  pointer-events: none; /* 👈 prevents blocking interactions */
+  pointer-events: none;
 }
 
+/* Cyber Grid Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(rgba(255, 127, 127, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: -3;
+  pointer-events: none;
+}
 
 /*======================
   Utility Classes
@@ -64,6 +74,22 @@ body::before {
 .bg-accent { background-color: var(--accent); }
 .text-highlight { color: var(--highlight); }
 .bg-highlight { background-color: var(--highlight); }
+
+/*======================
+  Typography & Glow
+=======================*/
+.glow-text {
+  color: var(--primary);
+  text-shadow: 0 0 5px var(--primary), 0 0 10px var(--accent), 0 0 15px var(--primary);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+.italian-subheading {
+  font-family: 'Italiana', serif;
+  font-size: 1.25rem;
+  color: #ccc;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
 
 /*======================
   Buttons
@@ -83,6 +109,26 @@ body::before {
   transform: scale(1.05);
   box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent);
 }
+/* Glow Border CTA */
+.glow-border {
+  position: relative;
+  z-index: 0;
+}
+.glow-border::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -2px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  animation: borderGlow 3s linear infinite;
+  background-size: 300% 300%;
+}
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 /*======================
   Hero Section
@@ -95,12 +141,9 @@ body::before {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-
-  background: linear-gradient(135deg, var(--background), var(--secondary));
+  background: linear-gradient(135deg, var(--background), var(--secondary)); /* Dark reddish-black gradient */
   color: var(--foreground);
 }
-
-
 .hero-content {
   display: flex;
   justify-content: space-between;
@@ -145,7 +188,6 @@ body::before {
   justify-content: center;
   align-items: center;
 }
-
 /* Floating Image */
 .floating-image-wrapper {
   position: relative;
@@ -177,12 +219,18 @@ body::before {
 =======================*/
 @keyframes glowPulse {
   0%, 100% {
-    box-shadow: 0 10px 30px #00ffc277;
+    box-shadow: 0 10px 30px #ff4c4c77;
   }
   50% {
-    box-shadow: 0 10px 40px #00ffc2aa;
+    box-shadow: 0 10px 40px #ff4c4caa;
   }
 }
+.navbar {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 76, 76, 0.1); /* Neon red border */
+}
+
 .navbar-glow {
   animation: glowPulse 3s ease-in-out infinite;
 }
@@ -200,12 +248,12 @@ body::before {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background: linear-gradient(to right, #0fffc1, #00bfff);
+  background: linear-gradient(to right, #ff4c4c, #ff7f7f);
   transition: width 0.3s ease-in-out;
 }
 .nav-link:hover {
-  color: #0fffc1;
-  text-shadow: 0 0 8px #0fffc1;
+  color: #ff4c4c; /* Neon red */
+  text-shadow: 0 0 8px #ff4c4c;
 }
 .nav-link:hover::after {
   width: 100%;
@@ -220,8 +268,8 @@ body::before {
   transition: all 0.3s ease-in-out;
 }
 .dropdown-menu-item:hover {
-  background: rgba(0, 255, 255, 0.08);
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  background: rgba(255, 76, 76, 0.08);
+  box-shadow: 0 0 8px rgba(255, 76, 76, 0.2);
 }
 
 /*======================
@@ -253,32 +301,43 @@ body::before {
   Animations
 =======================*/
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .fade-up {
   animation: fadeUp 0.8s ease-out forwards;
 }
-
 @keyframes float-rotate {
-  0% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-  }
-  50% {
-    transform: translateY(-20px) rotate(1deg) scale(1.02);
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-  }
+  0% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(-20px) rotate(1deg) scale(1.02); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1); }
 }
 .animate-float {
   animation: float-rotate 5s ease-in-out infinite;
+}
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px #ff4c4c);
+  }
+  50% {
+    filter: drop-shadow(0 0 25px #ff4c4c);
+  }
+}
+.animate-glow {
+  animation: glow 2s infinite ease-in-out;
+}
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+.animate-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
 }
 
 /*======================
@@ -296,50 +355,73 @@ body::before {
 }
 
 /*======================
-  Background Layer
+  Cyber Card (Glassmorphism)
 =======================*/
-html, body {
+.cyber-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 76, 76, 0.1); /* Neon red border */
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(255, 76, 76, 0.15); /* Neon red glow */
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cyber-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 76, 76, 0.3); /* Neon red hover glow */
+}
+.neon-glow {
+  text-shadow: 0 0 10px rgba(255, 76, 76, 0.6), 0 0 20px rgba(255, 76, 76, 0.4);
+}
+
+.btn-neon {
+  background: linear-gradient(to right, #ff4c4c, #ff7f7f);
+  color: black;
+  box-shadow: 0 0 20px rgba(255, 76, 76, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+/*=========================
+  Who We Are Section
+=========================*/
+.who-we-are-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, var(--background), var(--secondary));
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   position: relative;
-  z-index: 0;
+  overflow: hidden;
 }
-@keyframes glow-pulse {
+
+.who-we-are-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  text-shadow: var(--font-glow);
+  margin-bottom: 1rem;
+}
+
+.who-we-are-section p {
+  max-width: 800px;
+  font-size: 1.125rem;
+  color: var(--foreground);
+  line-height: 1.7;
+}
+
+.who-we-are-section .highlight {
+  color: var(--accent);
+  text-shadow: 0 0 5px var(--accent), 0 0 10px var(--primary);
+}
+@keyframes pulse-glow {
   0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
   }
   50% {
-    opacity: 0.7;
-    transform: scale(1.05);
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
   }
 }
-
-.animate-pulse {
-  animation: glow-pulse 2.5s ease-in-out infinite;
+.animate-text-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
-.italian-subheading {
-  font-family: 'Italiana', serif;
-  font-size: 1.25rem; /* adjust size if needed */
-  color: #ccc; /* match your theme */
-  font-weight: normal;
-  letter-spacing: 0.5px;
-}
-@keyframes glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 10px #00ffc2);
-  }
-  50% {
-    filter: drop-shadow(0 0 25px #00ffc2);
-  }
-}
-
-.animate-glow {
-  animation: glow 2s infinite ease-in-out;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* adjust based on your navbar height */
-}
-

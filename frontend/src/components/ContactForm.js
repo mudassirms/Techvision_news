@@ -56,8 +56,8 @@ export default function ContactForm() {
 
     emailjs
       .send(
-        "service_04odo0c", //your service ID
-        "template_gqgqb4c", //your template ID
+        "service_04odo0c", // your service ID
+        "template_gqgqb4c", // your template ID
         {
           name,
           email,
@@ -66,7 +66,7 @@ export default function ContactForm() {
           time: new Date().toLocaleString(),
           title: "New Contact Form Submission",
         },
-        "M-pTkSNkHoQjr6oSd" //your public key
+        "M-pTkSNkHoQjr6oSd" // your public key
       )
       .then(() => {
         toast.success("✅ Message sent successfully!");
@@ -82,87 +82,83 @@ export default function ContactForm() {
   return (
     <>
       <ToastContainer position="top-right" autoClose={4000} />
-      <motion.form
-        onSubmit={handleSubmit}
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="mt-6 space-y-4 max-w-md mx-auto"
+        className="mt-6 w-full max-w-sm mx-auto" // Cleaned up styling
       >
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Your Name"
-          className={`w-full p-3 rounded bg-gray-700 border ${
-            errors.name ? "border-red-500" : "border-gray-600"
-          } focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
-          required
-        />
-        {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
-
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Your Email"
-          className={`w-full p-3 rounded bg-gray-700 border ${
-            errors.email ? "border-red-500" : "border-gray-600"
-          } focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
-          required
-        />
-        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-
-        <PhoneInput
-  country={"us"}
-  value={formData.phone}
-  onChange={handlePhoneChange}
-  enableSearch={true}
-  searchPlaceholder="Search country"
-  preferredCountries={["us", "in", "gb", "ca"]}
-  inputClass="!w-full !p-3 !bg-gray-700 !text-white !border !border-gray-600 !rounded"
-  buttonClass="!bg-gray-700"
-  dropdownClass="!bg-gray-800 !text-white !z-[1000] !max-h-[250px] !overflow-y-auto !border !border-gray-700"
-  containerClass="!w-full"
-  searchStyle={{
-    backgroundColor: "#1f2937", // bg-gray-800
-    color: "#ffffff",
-    border: "1px solid #4b5563",
-    borderRadius: "0.35rem",
-    padding: "0.5rem",
-    marginBottom: "0.5rem",
-  }}
-/>
-
-
-        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
-
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Your Message"
-          rows="4"
-          className={`w-full p-3 rounded bg-gray-700 border ${
-            errors.message ? "border-red-500" : "border-gray-600"
-          } focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
-          required
-        ></textarea>
-        {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full flex justify-center items-center gap-2 p-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg shadow-lg transition"
+        <motion.form
+          onSubmit={handleSubmit}
+          className="space-y-4 w-full" // Simplified layout
         >
-          {loading && (
-            <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
-          )}
-          {loading ? "Sending..." : "Send Message"}
-        </button>
-      </motion.form>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Your Name"
+            className={`w-full p-2 rounded bg-gray-700 border ${errors.name ? "border-red-500" : "border-gray-600"} focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+            required
+          />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Your Email"
+            className={`w-full p-2 rounded bg-gray-700 border ${errors.email ? "border-red-500" : "border-gray-600"} focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+            required
+          />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+
+          <PhoneInput
+            country={"us"}
+            value={formData.phone}
+            onChange={handlePhoneChange}
+            enableSearch={true}
+            searchPlaceholder="Search country"
+            preferredCountries={["us", "in", "gb", "ca"]}
+            inputClass="!w-full !p-2 !bg-gray-700 !text-white !border !border-gray-600 !rounded"
+            buttonClass="!bg-gray-700"
+            dropdownClass="!bg-gray-800 !text-white !z-[1000] !max-h-[250px] !overflow-y-auto !border !border-gray-700"
+            containerClass="!w-full"
+            searchStyle={{
+              backgroundColor: "#1f2937", // bg-gray-800
+              color: "#ffffff",
+              border: "1px solid #4b5563",
+              borderRadius: "0.35rem",
+              padding: "0.5rem",
+              marginBottom: "0.5rem",
+            }}
+          />
+          {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your Message"
+            rows="3" // Reduced height
+            className={`w-full p-2 rounded bg-gray-700 border ${errors.message ? "border-red-500" : "border-gray-600"} focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+            required
+          ></textarea>
+          {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full flex justify-center items-center gap-2 p-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg shadow-lg transition"
+          >
+            {loading && (
+              <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+            )}
+            {loading ? "Sending..." : "Send Message"}
+          </button>
+        </motion.form>
+      </motion.div>
     </>
   );
 }
