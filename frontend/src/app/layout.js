@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Navbar from "../components/Navbar"; // ✅ Import Navbar here
-import Footer from "../components/Footer"; // Optional: Footer globally too
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { LanguageProvider } from "../components/LanguageContext";  // import here
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +20,9 @@ export const metadata = {
   description: "Enterprise solutions powered by AI and innovation",
 };
 
+/**
+ * @param {{ children: React.ReactNode }} props
+ */
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -31,14 +35,23 @@ export default function RootLayout({ children }) {
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem={true}
+          enableSystem
           disableTransitionOnChange={false}
         >
-          <div className="w-full h-full bg-white dark:bg-[#050d1b] transition-colors duration-300">
-            <Navbar /> {/* ✅ Global Navbar */}
-            <main className="w-full h-full">{children}</main>
-            <Footer /> {/* Optional: add global Footer too */}
-          </div>
+          <LanguageProvider> {/* Wrap everything here */}
+            <div className="w-full min-h-screen bg-white dark:bg-[#050d1b] transition-colors duration-300 flex flex-col">
+              {/* Global Navbar */}
+              <Navbar />
+
+              {/* Main content area */}
+              <main role="main" className="flex-grow w-full">
+                {children}
+              </main>
+
+              {/* Optional Global Footer */}
+              <Footer />
+            </div>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

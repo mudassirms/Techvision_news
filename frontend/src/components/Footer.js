@@ -2,144 +2,144 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050d1b] text-white py-6 px-4 border-t border-[#1f2a3a] text-sm">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 lg:gap-16">
+    <footer className="bg-[#050d1b] text-white py-10 px-6 border-t border-cyan-600/20 select-none">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 lg:gap-24">
         {/* Logo & About */}
         <div className="lg:w-1/3 flex flex-col items-start">
-          <Link href="/" className="mb-2">
+          <Link href="/" className="mb-4">
             <img
-              src="/Logo.png"
-              alt="Maverick Ignite Logo"
-              className="h-24 sm:h-45 w-auto object-contain transition-all duration-300"
+              src="/logo.png"
+              alt="The Visionary News Logo"
+              className="h-20 sm:h-28 w-auto object-contain transition-all duration-300 filter drop-shadow-cyan"
             />
           </Link>
-
-          <div className="flex space-x-4 text-xl mt-2">
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400"
-            >
-              <FaGithub />
-            </a>
+          <p className="text-gray-400 max-w-xs leading-relaxed tracking-wide font-sans">
+            The Visionary News delivers the latest breaking stories, deep analysis, and trusted journalism with a futuristic touch.
+          </p>
+          <div className="flex space-x-6 text-xl mt-6 text-cyan-400">
+            {[{
+              Icon: FaFacebookF,
+              href: "https://www.facebook.com/TheVisionaryNews",
+              label: "Facebook"
+            },{
+              Icon: FaTwitter,
+              href: "https://twitter.com/TheVisionaryNews",
+              label: "Twitter"
+            },{
+              Icon: FaInstagram,
+              href: "https://www.instagram.com/TheVisionaryNews",
+              label: "Instagram"
+            },{
+              Icon: FaYoutube,
+              href: "https://www.youtube.com/TheVisionaryNews",
+              label: "YouTube"
+            }].map(({ Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="hover:text-cyan-300 transition duration-300 hover:drop-shadow-cyan"
+              >
+                <Icon />
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Info Columns */}
-        <div className="flex flex-col sm:flex-row justify-between flex-1 gap-8">
-          {/* Company */}
-          <div className="min-w-[150px]">
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-gray-300 text-sm">
-              <li>
-                <a href="#about" className="hover:text-cyan-300">
-                  About Us
-                </a>
+        {/* Editorial */}
+        <div className="min-w-[160px]">
+          <h4 className="font-semibold mb-5 text-cyan-400 tracking-wide uppercase text-sm">
+            Editorial
+          </h4>
+          <ul className="space-y-4 text-gray-400 text-sm font-sans tracking-wide">
+            {[
+              { name: "About Us", href: "/about" },
+              { name: "Contact Us", href: "/contact" },
+              { name: "Contributors", href: "/contributors" },
+              { name: "Privacy Policy", href: "/privacy-policy" },
+              { name: "Terms of Service", href: "/terms-of-service" },
+            ].map(({ name, href }) => (
+              <li key={name}>
+                <Link
+                  href={href}
+                  className="hover:text-cyan-300 transition duration-300"
+                >
+                  {name}
+                </Link>
               </li>
-              <li>
-                <a href="#contact" className="hover:text-cyan-300">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
+        </div>
 
-          {/* Services */}
-          <div className="min-w-[220px]">
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
-              <li>
-                <a href="#ai" className="hover:text-cyan-300">
-                  AI-Based Applications
-                </a>
+        {/* Categories */}
+        <div className="min-w-[160px]">
+          <h4 className="font-semibold mb-5 text-cyan-400 tracking-wide uppercase text-sm">
+            Categories
+          </h4>
+          <ul className="space-y-4 text-gray-400 text-sm font-sans tracking-wide">
+            {[
+              { name: "Politics", href: "/category/politics" },
+              { name: "Technology", href: "/category/technology" },
+              { name: "Business", href: "/category/business" },
+              { name: "Sports", href: "/category/sports" },
+              { name: "Culture", href: "/category/culture" },
+            ].map(({ name, href }) => (
+              <li key={name}>
+                <Link
+                  href={href}
+                  className="hover:text-cyan-300 transition duration-300"
+                >
+                  {name}
+                </Link>
               </li>
-              <li>
-                <a href="#database" className="hover:text-cyan-300">
-                  Web Applications all types
-                </a>
-              </li>
-              <li>
-                <a href="#integration" className="hover:text-cyan-300">
-                  Data Science Applications
-                </a>
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
+        </div>
 
-          {/* Contact */}
-          <div className="min-w-[220px]">
-            <h4 className="font-semibold mb-4">Get In Touch</h4>
-            <p className="text-gray-300 text-sm">
-              Email:{" "}
-              <a
-                href="mailto:techvisionarystudio@gmail.com"
-                className="hover:text-cyan-300"
-              >
-                techvisionarystudio@gmail.com
-              </a>
-            </p>
-            <p className="text-gray-300 text-sm mt-2">
-              Phone:{" "}
-              <a href="tel:+919036666910" className="hover:text-cyan-300">
-                +91 9036666910
-              </a>
-            </p>
-            <p className="text-gray-300 text-sm mt-2">
-              Address:{" "}
-              <a
-                href="https://www.google.com/maps/place/3rd+Floor,+Vaishnavi+Signature,+Panathur+Main+Rd,+Bengaluru,+Karnataka+560103"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-cyan-300"
-              >
-                No 16 HIG-A Building No.20 3rd Floor KHB colony shirke layout,
-                Kengeri, Bangalore 560060
-              </a>
-            </p>
-          </div>
+        {/* Subscribe */}
+        <div className="min-w-[260px]">
+          <h4 className="font-semibold mb-5 text-cyan-400 tracking-wide uppercase text-sm">
+            Subscribe
+          </h4>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4 max-w-xs tracking-wide font-sans">
+            Get the latest news delivered straight to your inbox.
+          </p>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert("Subscribed!");
+            }}
+            className="flex flex-col space-y-3"
+          >
+            <input
+              type="email"
+              placeholder="Your email address"
+              required
+              className="px-4 py-3 rounded-md bg-[#0a1224]/90 border border-cyan-700 placeholder-gray-500 text-white font-sans tracking-wide focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-opacity-75 transition"
+            />
+            <button
+              type="submit"
+              className="bg-cyan-500 hover:bg-cyan-600 shadow-neon-md transition rounded-md py-3 font-semibold tracking-wide"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
 
       {/* Bottom Strip */}
-      <div className="border-t border-[#1f2a3a] mt-6 pt-4 text-center text-gray-400 px-4 text-xs sm:text-sm">
-        <p className="mb-2">
+      <div className="border-t border-cyan-700/30 mt-10 pt-6 text-center text-gray-500 px-4 text-xs sm:text-sm tracking-wide font-mono">
+        <p>
           © 2025{" "}
-          <span className="text-white font-semibold">
-            TechVisonary Studio
-          </span>
-          . All rights reserved.
+          <span className="text-cyan-400 font-semibold tracking-wide">The Visionary News</span>. All rights
+          reserved.
         </p>
-
-        <div className="flex justify-center items-center gap-3 mb-1">
-          <Link href="/privacy-policy" className="hover:text-cyan-300">
-            Privacy Policy
-          </Link>
-          <span>|</span>
-          <Link href="/terms-of-service" className="hover:text-cyan-300">
-            Terms of Service
-          </Link>
-        </div>
       </div>
     </footer>
   );

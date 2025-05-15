@@ -1,98 +1,95 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 
-const Hero = () => {
-  const router = useRouter();
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Search } from "lucide-react";
+
+const categories = ["Politics", "Technology", "Economy", "Culture", "World"];
+const headlines = [
+  "Breaking News: AI Reshapes Global Economy",
+  "Technology Trends 2025: What to Expect",
+  "New Innovations in Green Energy",
+  "Politics: Global Leaders Meet for Climate Summit",
+];
+
+const HeroSection = () => {
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <header
-      id="home"
-      className="relative w-full min-h-screen flex items-center bg-[#0f0c29] pt-24 pb-10 overflow-hidden"
+      className="relative w-full min-h-[85vh] flex flex-col justify-center items-center bg-[#0f0c29] overflow-hidden px-6 sm:px-12 text-white"
+      role="banner"
     >
-      {/* Background video */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover object-center"
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#00d9f5]/20 via-[#ff4c4c]/10 to-transparent pointer-events-none" />
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-6xl w-full text-center space-y-6 sm:space-y-8">
+        <h1 className="text-6xl font-bold bg-gradient-to-r from-[#00d9f5] to-[#ff4c4c] text-transparent bg-clip-text hover:animate-pulse select-none">
+          Visionary News
+        </h1>
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          Real-time coverage on Technology, Politics, Economy, and Global Affairs.
+        </p>
+
+        {/* Search Bar */}
+        <form
+          role="search"
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert(`Search for: ${searchQuery}`);
+          }}
+          className="relative mt-6 w-full max-w-lg mx-auto"
         >
-          <source
-            src="/Purple%20Blue%20Modern%20Robot%20Assitant%20Video.mp4"
-            type="video/mp4"
+          <input
+            id="search"
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search the latest news..."
+            className="w-full px-5 py-3 bg-gray-900 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            aria-label="Search articles"
           />
-          Your browser does not support the video tag.
-        </video>
+          <Search
+            className="absolute right-4 top-3.5 text-cyan-400 pointer-events-none"
+            size={20}
+            aria-hidden="true"
+          />
+        </form>
       </div>
 
-      {/* Background glow */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-tr from-[#00d9f5]/10 via-[#ff4c4c]/5 to-transparent pointer-events-none" />
-
-      {/* Main content container */}
-      <div className="relative z-10 flex items-center justify-start w-full max-w-7xl px-4 sm:px-6 lg:px-12">
-        {/* Text Section */}
-        <motion.div
-          className="text-left w-full max-w-3xl"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <h1 className="whitespace-nowrap text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-5 bg-gradient-to-r from-[#00d9f5] to-[#ff4c4c] text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(0,217,245,0.4)] animate-glow overflow-x-auto">
-            Visionary Tech Solutions
-          </h1>
-          <p className="whitespace-nowrap text-sm sm:text-base md:text-lg text-gray-300 mb-7 overflow-x-auto">
-            We blend data science, AI, development & design to transform your vision into reality.
-          </p>
-          <a href="#contact">
-            <button className="relative px-6 sm:px-8 py-3 rounded-full font-semibold text-black bg-gradient-to-r from-[#00d9f5] to-[#ff4c4c] overflow-hidden shadow-lg hover:opacity-100 transition-all duration-300 group">
-              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00d9f5] to-[#ff4c4c] blur-md opacity-30 group-hover:opacity-60 transition-all duration-300 animate-pulse" />
-              <span className="relative z-10">Get Started</span>
-            </button>
-          </a>
-        </motion.div>
-      </div>
-
-      {/* Scroll Arrow */}
-      <a
-        href="#about"
-        className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-300 hover:text-[#00d9f5] transition duration-300 z-10"
+      {/* Live Ticker */}
+      <section
+        className="relative w-full mt-10 bg-gradient-to-r from-[#00d9f5]/20 to-[#ff4c4c]/20 overflow-hidden"
+        aria-label="Live News Headlines"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="currentColor"
-          className="w-6 h-6 sm:w-8 sm:h-8"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </a>
+        <div className="flex animate-scroll whitespace-nowrap">
+          {headlines.map((headline, index) => (
+            <span
+              key={index}
+              className="px-6 py-3 text-white border-r border-[#1f2a3a]"
+            >
+              {headline}
+            </span>
+          ))}
+        </div>
+      </section>
 
-      {/* Animations */}
       <style jsx>{`
-        .animate-glow {
-          animation: shimmer 5s ease-in-out infinite;
-          background-size: 200% 200%;
-        }
-
-        @keyframes shimmer {
+        @keyframes scroll {
           0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
+            transform: translateX(100%);
           }
           100% {
-            background-position: 0% 50%;
+            transform: translateX(-100%);
           }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
         }
       `}</style>
     </header>
   );
 };
 
-export default Hero;
+export default HeroSection;
